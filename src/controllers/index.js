@@ -1,3 +1,8 @@
-const { signup } = require('./auth');
+const { signup, login } = require('./auth');
+const getProducts = require('./products/getProducts');
 
-module.exports = { signup };
+module.exports = {
+  signup,
+  login,
+  getProducts,
+};
