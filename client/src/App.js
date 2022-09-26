@@ -3,7 +3,7 @@ import logo from './logo.svg';
 
 function App() {
   useEffect(() => {
-    fetch('/m')
+    fetch('/api/v1/isLogged')
       .then((res) => res.json())
       .then((res) => console.log(res));
   }, []);
