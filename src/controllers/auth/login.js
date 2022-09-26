@@ -14,14 +14,14 @@ const signIn = (req, res, next) => {
         return result.rows[0];
       }
     })
-    .then((userData) => {
+    .then((userData) =>
       bcrypt.compare(password, userData.password).then((data) => {
         if (!data) {
-          throw new CustomizedServerErrors(401, 'wrong password!');
+          throw new CustomizedServerErrors(401, 'Invalid password');
         }
-      });
-      return userData;
-    })
+        return userData;
+      })
+    )
     .then((data) =>
       signJWT({
         id: data.id,
