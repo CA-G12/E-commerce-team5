@@ -1,5 +1,7 @@
 const connection = require('../../config/connection');
 
-const checkExistance = (key, value) =>
-  connection.query(`select * from users where ${key} =$1`, [value]);
+// eslint-disable-next-line arrow-body-style
+const checkExistance = (value) => {
+  return connection.query(`select * from users where email =$1`, [value]);
+};
 module.exports = checkExistance;
