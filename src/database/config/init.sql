@@ -5,6 +5,7 @@ drop table if exists users, products, categories, cart cascade;
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(200) UNIQUE NOT NULL,
+    email VARCHAR(200) UNIQUE NOT NULL,
     password TEXT NOT NULL,
     avatar TEXT
 );
@@ -23,14 +24,15 @@ CREATE TABLE products (
 CREATE TABLE cart (
     userId INT NOT NULL, 
     productId INT NOT NULL,
+    quantity INT DEFAULT 1,
     timeAdded TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT FKuserId FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
     CONSTRAINT FKproductId FOREIGN KEY (productId) REFERENCES users(id) ON DELETE CASCADE
 );
 
-INSERT INTO users (username, password, avatar) VALUES 
-('Catty', '$2a$10$Q4WJ8gPjyvinnEawSsguju/DK7xUSYPQigBoRDGuY6bKT2IWjjsB2', 'https://images.pexels.com/photos/1276553/pexels-photo-1276553.jpeg?auto=compress&cs=tinysrgb&w=600'),
-('Example', '$2a$10$Q4WJ8gPjyvinnEawSsguju/DK7xUSYPQigBoRDGuY6bKT2IWjjsB2', 'https://images.pexels.com/photos/3755755/pexels-photo-3755755.jpeg?auto=compress&cs=tinysrgb&w=600');
+INSERT INTO users (email, username, password, avatar) VALUES 
+('katty@gmail.com', 'Katty', '$2a$10$Q4WJ8gPjyvinnEawSsguju/DK7xUSYPQigBoRDGuY6bKT2IWjjsB2', 'https://images.pexels.com/photos/1276553/pexels-photo-1276553.jpeg?auto=compress&cs=tinysrgb&w=600'),
+('ex@gmail.com','Example', '$2a$10$Q4WJ8gPjyvinnEawSsguju/DK7xUSYPQigBoRDGuY6bKT2IWjjsB2', 'https://images.pexels.com/photos/3755755/pexels-photo-3755755.jpeg?auto=compress&cs=tinysrgb&w=600');
  
 INSERT INTO categories (name) VALUES ('Smart watches'), ('Wall watches');
 
@@ -40,6 +42,6 @@ INSERT INTO products (name, image, price, categoryId) VALUES
 ('Wall watch', 'https://i.pinimg.com/originals/ef/67/06/ef67067010009c6c604047735ab3dbb4.jpg', 20, 2);
 
 
-INSERT INTO cart (userId, productId) VALUES (1, 1), (1, 2), (2, 1);
+INSERT INTO cart (userId, productId, quantity) VALUES (1, 1, 1), (1, 2, 3), (2, 1, 2);
 
 COMMIT;
