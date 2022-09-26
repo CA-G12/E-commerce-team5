@@ -2,7 +2,6 @@
 const { addCartQuery } = require('../../database/queries');
 
 const addCart = (req, res) => {
-  console.log(req.body);
   const { userId, productId, quantity } = req.body;
   const q = quantity || 1;
   addCartQuery({ userId, productId, q })

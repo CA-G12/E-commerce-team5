@@ -6,7 +6,7 @@ const { signJWT, CustomizedServerErrors } = require('../../utils');
 const signIn = (req, res, next) => {
   const { email, password } = req.body;
   signInValidation({ email, password })
-    .then(() => checkExistanceQuery(email))
+    .then(() => checkExistanceQuery('email', email))
     .then((result) => {
       if (!result.rows.length) {
         throw new CustomizedServerErrors(401, 'User not found!');
