@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.disable('x-powered-by');
 
-// app.use(router);
+app.use('/api/v1', router);
 
 if (process.env.NODE_ENV === 'production') {
   app.use('*', (req, res) => {
@@ -34,8 +34,10 @@ app.use((req, res) => {
 
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
-  console.log(err);
-  res.status(500).send('server error');
+  const { status, errMsg } = err;
+  if (status) {
+    res.status(err.status).json({ error: errMsg });
+  } else res.status(500).send('server error');
 });
 
 module.exports = app;
