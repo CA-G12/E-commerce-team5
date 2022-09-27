@@ -34,9 +34,9 @@ app.use((req, res) => {
 
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
-  const { status, errMsg } = err;
+  const { status, errMsg, field } = err;
   if (status) {
-    res.status(err.status).json({ error: errMsg });
+    res.status(err.status).json({ error: errMsg, name: field });
   } else res.status(500).send('server error');
 });
 

@@ -12,13 +12,17 @@ const signup = (req, res, next) => {
     .then(() => checkExistanceQuery('email', email))
     .then((result) => {
       if (result.rows.length) {
-        throw new CustomizedServerErrors(401, 'Email Already Exists!');
+        throw new CustomizedServerErrors(400, 'Email Already Exists!', 'email');
       }
     })
     .then(() => checkExistanceQuery('username', username))
     .then((result) => {
       if (result.rows.length) {
-        throw new CustomizedServerErrors(401, 'Username Already Exists!');
+        throw new CustomizedServerErrors(
+          400,
+          'Username Already Exists!',
+          'username'
+        );
       }
     })
     .then(() => hashPassword(password))
@@ -32,7 +36,8 @@ const signup = (req, res, next) => {
         next(
           new CustomizedServerErrors(
             401,
-            `Validation error : ${err.details[0].message}`
+            `Validation error : ${err.details[0].message}`,
+            err.details[0].path[0]
           )
         );
       } else next(err);
