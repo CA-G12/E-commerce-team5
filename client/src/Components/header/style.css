@@ -6,6 +6,7 @@
 }
 .header{
     font-family: 'Indie Flower', cursive;
+    font-size: 30px;
 }
 a{
     text-decoration: none;
@@ -18,16 +19,21 @@ a:hover{
 .header{
     display: flex;
     justify-content:space-between;
+    align-items: center;
     background-color:#EEEEEE;
-    padding: 2rem;
+    padding: 1rem 0rem 1rem 2rem;
 }
 /* Style The Dropdown Button */
 .dropbtn {
     background-color: #828282;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: #E1E1E1;
     font-size: 16px;
     border: none;
-    padding-right:2rem ;
+    width:fit-content;
+    padding:0.5rem 3rem 0.5rem 1rem;
     cursor: pointer;
   }
   
@@ -69,9 +75,14 @@ a:hover{
     background-color: #f9f9f9;
   }
   .userAvatar{
-      object-fit:cover;
-      background-size:cover ;
-      height: 4rem;
-      width: 4rem;
+    object-fit:cover;
+    background-size:cover;
+    margin-right: 2rem;
+    height: 4rem;
+    width: 4rem;
     border-radius: 50%;
+  }
+  .login-sign{
+    padding-right: 2rem;
+    font-size: 25px;
   }

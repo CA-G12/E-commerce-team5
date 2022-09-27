@@ -1,33 +1,31 @@
 import { useState, useEffect } from 'react';
 import './style.css';
-import { BsFillCartFill } from 'react-icons/fa';
+import { BsFillCartFill } from 'react-icons/bs';
+import { RiLogoutBoxLine } from 'react-icons/ri';
 
 export default function Header() {
-  const [isLogged, setIslogged] = useState(true);
+  const [isLogged, setIslogged] = useState(false);
   const [userData, setUserdata] = useState({
-    id: '1',
-    username: 'Lesa',
+    id: '',
+    username: '',
     image:
-      'https://images.unsplash.com/photo-1615497001839-b0a0eac3274c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y3V0ZSUyMGNhdHxlbnwwfHwwfHw%3D&w=1000&q=80',
+      'https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg',
   });
 
   useEffect(() => {
     fetch('/api/v1/isLogged')
       .then((data) => {
-        data.json();
-        setIslogged(true);
-        setUserdata({
-          id: 1,
-          username: 'Lesa',
-          image:
-            'https://img.freepik.com/premium-photo/crossbredeed-cat-wearing-bell-isolated-white_191971-23879.jpg',
-        });
-        console.log(userData.username);
-        // if (data.isToken) {
-        //   setIslogged(true);
-        // } else {
-        //   setIslogged(false);
-        // }
+        if (data.status === 401) {
+          setIslogged(false);
+        } else if (data.status === 200) {
+          setIslogged(true);
+          setUserdata({
+            //  this part will need to be fixed when actual login is there
+            id: data.istoken.id,
+            username: data.istoken.username,
+            image: data.istoken.image,
+          });
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -42,21 +40,21 @@ export default function Header() {
       <section>
         <div className="dropdown">
           <button className="dropbtn" type="button">
-            {userData.username}
             <div
               className="userAvatar"
               style={{
                 backgroundImage: `url(${userData.image})`,
               }}
-            >
-              hi
-            </div>
+            />
+            {userData.username}
           </button>
           <div className="dropdown-content">
             <a href={`/cart/${userData.id}`}>
               my Cart <BsFillCartFill />
             </a>
-            <a href="/logout">Logout</a>
+            <a href="/logout">
+              Logout <RiLogoutBoxLine />
+            </a>
           </div>
         </div>
       </section>
@@ -67,7 +65,9 @@ export default function Header() {
         <h1>Aligrandpa</h1>
       </section>
       <section>
-        <a href="/signin">Sign In</a>
+        <a className="login-sign" href="/login">
+          Log In
+        </a>
       </section>
     </nav>
   );
