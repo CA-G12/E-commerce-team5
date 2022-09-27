@@ -8,8 +8,7 @@ export default function Header() {
   const [userData, setUserdata] = useState({
     id: '',
     username: '',
-    image:
-      'https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg',
+    image: '',
   });
 
   useEffect(() => {
@@ -19,13 +18,17 @@ export default function Header() {
           setIslogged(false);
         } else if (data.status === 200) {
           setIslogged(true);
-          setUserdata({
-            //  this part will need to be fixed when actual login is there
-            id: data.istoken.id,
-            username: data.istoken.username,
-            image: data.istoken.image,
-          });
         }
+        return data.json();
+      })
+      .then((data) => {
+        setUserdata({
+          id: data.id,
+          username: data.username,
+          image: data.image
+            ? data.image
+            : 'https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg',
+        });
       })
       .catch((err) => {
         console.log(err);
