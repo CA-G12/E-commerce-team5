@@ -1,6 +1,6 @@
 const { signup, login } = require('./auth');
 const { getCart, addCart, deleteCart, updateCart } = require('./cart');
-const getProducts = require('./products/getProducts');
+const { getProducts, getSingleProduct } = require('./products');
 
 module.exports = {
   getCart,
@@ -10,4 +10,5 @@ module.exports = {
   signup,
   login,
   getProducts,
+  getSingleProduct,
 };
