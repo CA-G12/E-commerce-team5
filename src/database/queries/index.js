@@ -1,6 +1,6 @@
 const { getCartQuery, addCartQuery, deleteCartQuery } = require('./cart');
 const { addUserQuery, checkExistanceQuery } = require('./users');
-const getProductsQuery = require('./products/getProducts');
+const { getProductsQuery, getSingleProductQuery } = require('./products');
 
 module.exports = {
   addUserQuery,
@@ -8,5 +8,6 @@ module.exports = {
   getCartQuery,
   addCartQuery,
   deleteCartQuery,
+  getSingleProductQuery,
   getProductsQuery,
 };

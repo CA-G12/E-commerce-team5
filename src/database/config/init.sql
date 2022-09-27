@@ -58,7 +58,7 @@ VALUES (
     );
 
 INSERT INTO categories (name)
-VALUES ('Smart watches'), ('Wall watches');
+VALUES ('Smart watches'), ('Running shoes');
 
 INSERT INTO
     products (name, image, price, categoryId)
@@ -73,7 +73,7 @@ VALUES (
         200,
         1
     ), (
-        'Mens Bracelets',
+        'Running Shoes',
         'https://o.remove.bg/downloads/bc1f5ad6-bb26-4e98-8df8-8cfbe0874ea8/png-transparent-nike-free-nike-air-max-sneakers-shoe-red-shoes-thumbnail-removebg-preview.png',
         20,
         2

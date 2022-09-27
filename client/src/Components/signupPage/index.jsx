@@ -32,7 +32,7 @@ const index = () => {
         if (data.error) {
           setSignupError(data);
         } else {
-          console.log(data);
+          // redirect
         }
       });
     //   .then((data) => data.json());

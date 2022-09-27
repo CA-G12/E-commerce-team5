@@ -14,15 +14,7 @@ export default function ProductCart(props) {
     color: '#6fa5a3',
     fontSize: '2rem',
   };
-  // useEffect(() => {
-  //   if (userId) {
-  //     fetch(`/api/v1/cart/${userId}`)
-  //       .then((res) => res.json())
-  //       .then((res) => setCart(res.map((e) => e.productid)));
-  //   }
-  // }, [userId]);
   const addToCart = () => {
-    console.log('in add');
     fetch(`/api/v1/cart`, {
       method: 'POST',
       headers: {
@@ -37,7 +29,6 @@ export default function ProductCart(props) {
       .then(() => setInCart(true));
   };
   const removeFromCart = () => {
-    console.log('in del');
     fetch(`/api/v1/cart/${productData.id}`, {
       method: 'DELETE',
       headers: {
@@ -47,14 +38,8 @@ export default function ProductCart(props) {
       .then((res) => res.json())
       .then(console.log)
       .then(() => {
-        // const filtered = cart.filter((e) => {
-        //   console.log(e.id, productData.id, e.id !== productData.id, e);
-        //   return e !== productData.id;
-        // });
-        // setCart(filtered);
         setInCart(false);
-      })
-      .then(() => console.log(inCart));
+      });
   };
 
   return (
@@ -65,7 +50,7 @@ export default function ProductCart(props) {
         alt={productData.name}
       />
       <div className="card-category">
-        <p>Headphones</p>
+        <p>{productData.category_name}</p>
       </div>
       <div className="row">
         {inCart && (
