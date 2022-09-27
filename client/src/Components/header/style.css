@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&family=IBM+Plex+Sans&family=Indie+Flower&display=swap');
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+.header{
+    font-family: 'Indie Flower', cursive;
+}
+a{
+    text-decoration: none;
+    color:black;
+}
+a:hover{
+    text-shadow: #EEEEEE;
+    
+}
+.header{
+    display: flex;
+    justify-content:space-between;
+    background-color:#EEEEEE;
+    padding: 2rem;
+}
