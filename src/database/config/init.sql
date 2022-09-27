@@ -69,12 +69,12 @@ VALUES (
         1
     ), (
         'Apple watch',
-        'https://o.remove.bg/downloads/74d64e20-5fc8-4c44-9428-f186cf1243ab/Apple-Watch-removebg-preview.png',
+        'https://fastexpo.net/wp-content/uploads/2019/10/Apple-Watch-Apple-Watch-Iwatch-PNG-Image.png',
         200,
         1
     ), (
-        'Headphone',
-        'https://o.remove.bg/downloads/b23040fa-c8e1-49c2-8940-f6ccca052998/pexels-photo-3394666-removebg-preview.png',
+        'Mens Bracelets',
+        'https://o.remove.bg/downloads/bc1f5ad6-bb26-4e98-8df8-8cfbe0874ea8/png-transparent-nike-free-nike-air-max-sneakers-shoe-red-shoes-thumbnail-removebg-preview.png',
         20,
         2
     );
