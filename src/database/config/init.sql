@@ -69,12 +69,12 @@ VALUES (
         1
     ), (
         'Apple watch',
-        'https://msdrnews.com/wp-content/uploads/2022/08/Apple-Watch.jpg',
+        'https://o.remove.bg/downloads/74d64e20-5fc8-4c44-9428-f186cf1243ab/Apple-Watch-removebg-preview.png',
         200,
         1
     ), (
-        'Wall watch',
-        'https://i.pinimg.com/originals/ef/67/06/ef67067010009c6c604047735ab3dbb4.jpg',
+        'Headphone',
+        'https://o.remove.bg/downloads/b23040fa-c8e1-49c2-8940-f6ccca052998/pexels-photo-3394666-removebg-preview.png',
         20,
         2
     );

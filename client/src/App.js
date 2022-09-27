@@ -1,28 +1,24 @@
-import { useEffect } from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import ProductCart from './Components/ProductCard';
+import './global_style.css';
 
 function App() {
+  const [products, setProducts] = useState(null);
   useEffect(() => {
-    fetch('/api/v1/isLogged')
+    fetch('/api/v1/products')
       .then((res) => res.json())
-      .then((res) => console.log(res));
+      .then((res) => setProducts(res));
   }, []);
+  if (!products) {
+    return <h3>...Loading</h3>;
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="products-container">
+        {products.map((product) => (
+          <ProductCart key={product.id} productData={product} />
+        ))}
+      </div>
     </div>
   );
 }
