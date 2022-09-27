@@ -9,7 +9,9 @@ export default function Header() {
         data.json();
         if (data.isToken) {
           setIslogged(true);
-        } else setIslogged(false);
+        } else {
+          setIslogged(false);
+        }
       })
       .catch((err) => {
         console.log(err);
