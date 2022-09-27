@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import logo from './logo.svg';
+import Login from './Components/loginPage';
 
 function App() {
   useEffect(() => {
@@ -9,6 +10,7 @@ function App() {
   }, []);
   return (
     <div className="App">
+      <Login />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
