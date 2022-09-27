@@ -9,7 +9,7 @@ const signIn = (req, res, next) => {
     .then(() => checkExistanceQuery('email', email))
     .then((result) => {
       if (!result.rows.length) {
-        throw new CustomizedServerErrors(401, 'User not found!');
+        throw new CustomizedServerErrors(400, 'User not found!', 'email');
       } else {
         return result.rows[0];
       }
@@ -17,7 +17,7 @@ const signIn = (req, res, next) => {
     .then((userData) =>
       bcrypt.compare(password, userData.password).then((data) => {
         if (!data) {
-          throw new CustomizedServerErrors(401, 'Invalid password');
+          throw new CustomizedServerErrors(400, 'Invalid password', 'password');
         }
         return userData;
       })
@@ -36,8 +36,9 @@ const signIn = (req, res, next) => {
       if (err.details) {
         next(
           new CustomizedServerErrors(
-            401,
-            `Validation error : ${err.details[0].message}`
+            400,
+            `Validation error : ${err.details[0].message}`,
+            err.details[0].path[0]
           )
         );
       } else next(err);
