@@ -1,7 +1,8 @@
 class CustomizedServerErrors {
-  constructor(status, errMsg) {
+  constructor(status, errMsg, field = '') {
     this.status = status;
     this.errMsg = errMsg;
+    this.field = field;
   }
 }
 
