@@ -28,13 +28,13 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    cart (
+cart (
         userId INT NOT NULL,
         productId INT NOT NULL,
         quantity INT DEFAULT 1,
         timeAdded TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
-        FOREIGN KEY (productId) REFERENCES users(id) ON DELETE CASCADE,
+        CONSTRAINT FKuserId FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
+        CONSTRAINT FKproductId FOREIGN KEY (productId) REFERENCES users(id) ON DELETE CASCADE,
         PRIMARY KEY (userId, productId)
     );
 
