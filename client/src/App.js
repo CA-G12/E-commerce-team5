@@ -1,23 +1,34 @@
+import { Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-// import logo from './logo.svg';
-import Prodcuct from './Components/ProductPage';
+import Header from './Components/header';
+import Footer from './Components/footer';
 
 function App() {
-  const [data, setData] = useState(null);
+  const [userData, setUserdata] = useState({ loggedIn: false, checking: true });
   useEffect(() => {
-    fetch('/api/v1/products')
-      .then((res) => res.json())
-      .then((res) => {
-        setData(res);
+    fetch('/api/v1/isLogged')
+      .then((data) => data.json())
+      .then((data) => {
+        if (data.istoken) {
+          setUserdata({ loggedIn: true, checking: false, ...data });
+        } else {
+          setUserdata({ loggedIn: false, checking: false });
+        }
       });
   }, []);
-  if (data) {
-    const u = { ...data[0], inCart: true };
-    return (
-      <div className="App">
-        <Prodcuct product={u} />
+
+  return (
+    <>
+      <Header user={userData} />
+      <div className="main" style={{ minHeight: '100vh' }}>
+        {userData.checking ? (
+          <div>loading</div>
+        ) : (
+          <Outlet context={[userData, setUserdata]} />
+        )}
       </div>
-    );
-  }
+      <Footer />
+    </>
+  );
 }
 export default App;

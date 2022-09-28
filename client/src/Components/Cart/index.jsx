@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import CartItem from '../CartItem';
 import '../../global_style.css';
 import './style.css';
@@ -16,18 +17,23 @@ const getCart = () => fetch('/api/v1/cart').then((data) => data.json());
 
 function Cart() {
   const [cartItem, setCartItem] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [user, setUser] = useOutletContext();
 
+  const navigate = useNavigate();
   // useEffect(() => {
   //   postCart();
   // }, []);
 
   useEffect(() => {
-    getCart().then((data) => {
-      console.log(data);
-      setCartItem(data);
-    });
+    if (user.loggedIn) {
+      getCart().then((data) => {
+        setCartItem(data);
+      });
+    } else {
+      navigate('/');
+    }
   }, []);
-
   return (
     <main className="wrapper">
       <section className="content">

@@ -1,41 +1,11 @@
-import { useState, useEffect } from 'react';
+/* eslint-disable react/prop-types */
+// import { useState, useEffect } from 'react';
 import './style.css';
 import { BsFillCartFill } from 'react-icons/bs';
 import { RiLogoutBoxLine } from 'react-icons/ri';
 
-export default function Header() {
-  const [isLogged, setIslogged] = useState(false);
-  const [userData, setUserdata] = useState({
-    id: '',
-    username: '',
-    image: '',
-  });
-
-  useEffect(() => {
-    fetch('/api/v1/isLogged')
-      .then((data) => {
-        if (data.status === 401) {
-          setIslogged(false);
-        } else if (data.status === 200) {
-          setIslogged(true);
-        }
-        return data.json();
-      })
-      .then((data) => {
-        setUserdata({
-          id: data.id,
-          username: data.username,
-          image: data.image
-            ? data.image
-            : 'https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg',
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  return isLogged ? (
+export default function Header({ user }) {
+  return user.loggedIn ? (
     <nav className="header">
       <section>
         <h1>Aligrandpa</h1>
@@ -46,13 +16,16 @@ export default function Header() {
             <div
               className="userAvatar"
               style={{
-                backgroundImage: `url(${userData.image})`,
+                backgroundImage: `url(${
+                  user.avatar ||
+                  `https://ui-avatars.com/api/?name=${user.username}&background=random`
+                })`,
               }}
             />
-            {userData.username}
+            {user.username}
           </button>
           <div className="dropdown-content">
-            <a href={`/cart/${userData.id}`}>
+            <a href={`/cart/${user.id}`}>
               my Cart <BsFillCartFill />
             </a>
             <a href="/logout">

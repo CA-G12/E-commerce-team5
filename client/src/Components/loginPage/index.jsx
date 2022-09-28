@@ -4,9 +4,12 @@
 import './style.css';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { useState } from 'react';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import SearchLoading from '../searchLoading';
 
 const index = () => {
+  const [user, setUser] = useOutletContext();
+  const navigate = useNavigate();
   const [loginFormData, setLoginFormData] = useState({});
   const [loginError, setLoginError] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +34,8 @@ const index = () => {
         if (data.error) {
           setLoginError(data);
         } else {
-          // redirect
+          setUser({ ...data, loggedIn: true, checking: false });
+          navigate('/');
         }
       });
   };
@@ -117,12 +121,14 @@ const index = () => {
             </form>
           </div>
           <div className="login-check">
-            Dont Have Account? <a href="/">Sign Up</a>
+            Dont Have Account? <Link to="/signup">Sign Up</Link>
           </div>
         </div>
 
         <div className="login-close">
-          <FaRegWindowClose />
+          <Link to="/">
+            <FaRegWindowClose />
+          </Link>
         </div>
       </div>
     </div>

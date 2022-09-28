@@ -1,6 +1,11 @@
+import { useOutletContext } from 'react-router-dom';
 import './style.css';
 
+// eslint-disable-next-line react/prop-types
 export default function LandingPage() {
+  // eslint-disable-next-line no-unused-vars
+  const [user, setUser] = useOutletContext();
+  console.log(user);
   return (
     <>
       <section className="section-one">
