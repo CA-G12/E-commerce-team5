@@ -1,7 +1,6 @@
 const { getSingleProductQuery } = require('../../database/queries');
 
 const getSingleProduct = (req, res) => {
-  console.log();
   const { productId } = req.params;
   getSingleProductQuery(productId)
     .then((data) => {

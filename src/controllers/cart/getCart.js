@@ -6,7 +6,6 @@ const getCart = (req, res) => {
   getCartQuery(userId)
     .then((data) => res.send(data.rows))
     .catch((err) => {
-      console.log(err);
       res.status(500).json({ mag: 'couldnt get your cart,Please Try again' });
     });
 };

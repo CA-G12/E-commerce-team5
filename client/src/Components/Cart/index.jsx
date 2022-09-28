@@ -22,7 +22,10 @@ function Cart() {
   // }, []);
 
   useEffect(() => {
-    getCart().then((data) => setCartItem(data));
+    getCart().then((data) => {
+      console.log(data);
+      setCartItem(data);
+    });
   }, []);
 
   return (

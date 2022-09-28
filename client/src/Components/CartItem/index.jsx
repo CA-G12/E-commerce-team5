@@ -6,9 +6,9 @@ import { RiDeleteBinFill } from 'react-icons/ri';
 import { useState, useEffect } from 'react';
 
 function CartItem({ data }) {
-  const [state, setState] = useState({});
+  const [state, setState] = useState(data);
 
-  const { image, name, timeadded, price, quantity, productid, userid } = state;
+  const { image, name, timeadded, price, quantity, id } = state;
 
   const handleQuantity = (type) => {
     if (type === '+') {
@@ -38,8 +38,7 @@ function CartItem({ data }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        userId: userid,
-        productId: productid,
+        productId: id,
         q: quantity,
       }),
     });
@@ -61,7 +60,11 @@ function CartItem({ data }) {
           </p>
         </div>
         <p>
-          added at: <span>{timeadded}</span>
+          added at: <span>{new Date(timeadded).toLocaleDateString()} </span>
+          <span style={{ fontSize: '15px' }}>
+            {' '}
+            {new Date(timeadded).toLocaleTimeString()}
+          </span>
         </p>
       </div>
 
