@@ -5,9 +5,12 @@ import * as io from 'react-icons/io';
 import { RiDeleteBinFill } from 'react-icons/ri';
 import { useState, useEffect } from 'react';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function CartItem({ data }) {
   const [state, setState] = useState(data);
-
+  const notify = () => toast('saved successfully!');
   const { image, name, timeadded, price, quantity, id } = state;
 
   const handleQuantity = (type) => {
@@ -41,7 +44,8 @@ function CartItem({ data }) {
         productId: id,
         q: quantity,
       }),
-    });
+    }).then(() => notify);
+    // notify();
   };
 
   return (
@@ -91,6 +95,7 @@ function CartItem({ data }) {
           </button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
