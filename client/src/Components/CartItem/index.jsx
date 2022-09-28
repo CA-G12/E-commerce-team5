@@ -91,7 +91,7 @@ function CartItem({ data, setCartItem }) {
         </p>
       </div>
 
-      <div className="img__counter">
+      <div className="img__counter buttons_container">
         <div className="control">
           <p>${price * quantity}</p>
           <div>
