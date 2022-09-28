@@ -26,7 +26,7 @@ function Cart() {
     <main className="wrapper">
       <section className="content">
         {cartItem.map((item) => (
-          <CartItem key={item.id} data={item} />
+          <CartItem key={item.id} data={item} setCartItem={setCartItem} />
         ))}
       </section>
     </main>

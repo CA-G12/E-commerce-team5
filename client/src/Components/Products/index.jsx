@@ -19,7 +19,6 @@ export default function Products({ userData }) {
     const p1 = fetch('/api/v1/products').then((res) => res.json());
     const p2 = user.loggedIn && fetch(`/api/v1/cart`).then((res) => res.json());
     Promise.all([p1, p2]).then((values) => {
-      console.log(values);
       const productsInCartIds = values[1] && values[1].map((e) => e.id);
       const updatedProducts = [];
       if (values[1]) {
