@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
 // import React from 'react';
@@ -31,7 +32,7 @@ const index = () => {
         if (data.error) {
           setSignupError(data);
         } else {
-          console.log(data);
+          // redirect
         }
       });
     //   .then((data) => data.json());

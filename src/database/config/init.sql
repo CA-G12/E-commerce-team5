@@ -28,7 +28,7 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    cart (
+cart (
         userId INT NOT NULL,
         productId INT NOT NULL,
         quantity INT DEFAULT 1,
@@ -58,7 +58,7 @@ VALUES (
     );
 
 INSERT INTO categories (name)
-VALUES ('Smart watches'), ('Wall watches');
+VALUES ('Smart watches'), ('Running shoes');
 
 INSERT INTO
     products (name, image, price, categoryId)
@@ -69,12 +69,12 @@ VALUES (
         1
     ), (
         'Apple watch',
-        'https://msdrnews.com/wp-content/uploads/2022/08/Apple-Watch.jpg',
+        'https://fastexpo.net/wp-content/uploads/2019/10/Apple-Watch-Apple-Watch-Iwatch-PNG-Image.png',
         200,
         1
     ), (
-        'Wall watch',
-        'https://i.pinimg.com/originals/ef/67/06/ef67067010009c6c604047735ab3dbb4.jpg',
+        'Running Shoes',
+        'https://o.remove.bg/downloads/bc1f5ad6-bb26-4e98-8df8-8cfbe0874ea8/png-transparent-nike-free-nike-air-max-sneakers-shoe-red-shoes-thumbnail-removebg-preview.png',
         20,
         2
     );
