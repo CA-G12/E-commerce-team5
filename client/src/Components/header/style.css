@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&family=IBM+Plex+Sans&family=Indie+Flower&display=swap');
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+.header{
+    font-family: 'Indie Flower', cursive;
+    font-size: 30px;
+}
+a{
+    text-decoration: none;
+    color:black;
+}
+a:hover{
+    text-shadow: #EEEEEE;
+    
+}
+.header{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    background-color:#EEEEEE;
+    padding: 1rem 0rem 1rem 2rem;
+}
+/* Style The Dropdown Button */
+.dropbtn {
+    background-color: #828282;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #E1E1E1;
+    font-size: 16px;
+    border: none;
+    width:fit-content;
+    padding:0.5rem 3rem 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    color:#828282;
+    background-color: #f9f9f9;
+  }
+  .userAvatar{
+    object-fit:cover;
+    background-size:cover;
+    margin-right: 2rem;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+  }
+  .login-sign{
+    padding-right: 2rem;
+    font-size: 25px;
+  }
