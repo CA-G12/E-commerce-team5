@@ -1,32 +1,23 @@
-
-//import { useEffect } from 'react';
-import logo from './logo.svg';
-// import Login from './Components/loginPage';
-
-// import SignUp from './Components/signupPage';
-// import './global_style.css';
-
+import { useEffect, useState } from 'react';
+// import logo from './logo.svg';
+import Prodcuct from './Components/ProductPage';
 
 function App() {
-  return (
-    <div className="App">
-
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    fetch('/api/v1/products')
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res);
+      });
+  }, []);
+  if (data) {
+    const u = { ...data[0], inCart: true };
+    return (
+      <div className="App">
+        <Prodcuct product={u} />
+      </div>
+    );
+  }
 }
-
 export default App;
