@@ -28,9 +28,9 @@ const signIn = (req, res, next) => {
         email,
         username: data.username,
         avatar: data.avatar,
-      })
+      }).then((token) => ({ ...data, token }))
     )
-    .then((token) => res.cookie('token', token).json(token))
+    .then((data) => res.cookie('token', data.token).json(data))
 
     .catch((err) => {
       if (err.details) {

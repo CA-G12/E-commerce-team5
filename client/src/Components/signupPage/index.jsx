@@ -5,9 +5,11 @@
 import './style.css';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import SearchLoading from '../searchLoading';
 
 const index = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [signupError, setSignupError] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +34,7 @@ const index = () => {
         if (data.error) {
           setSignupError(data);
         } else {
-          // redirect
+          navigate('/');
         }
       });
     //   .then((data) => data.json());
@@ -137,11 +139,13 @@ const index = () => {
             </form>
           </div>
           <div className="login-check">
-            Already Have Account? <a href="/">Login</a>
+            Already Have Account? <Link to="/login">Login</Link>
           </div>
         </div>
         <div className="signup-close">
-          <FaRegWindowClose />
+          <Link to="/">
+            <FaRegWindowClose />
+          </Link>
         </div>
       </div>
     </div>

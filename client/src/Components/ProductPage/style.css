@@ -60,7 +60,7 @@
   background: radial-gradient(var(--bg-dark-gray), white);
 }
 
-img {
+.photo-main img {
   position: absolute;
   width: 300px;
   height: 400px;
