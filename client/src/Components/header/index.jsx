@@ -9,7 +9,9 @@ export default function Header({ user }) {
   return user.loggedIn ? (
     <nav className="header">
       <section>
-        <h1>Aligrandpa</h1>
+        <Link to="/" className="link">
+          <h1>Aligrandpa</h1>
+        </Link>
       </section>
       <section>
         <div className="dropdown">
