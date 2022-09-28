@@ -3,18 +3,57 @@ import '../../global_style.css';
 import './style.css';
 import * as io from 'react-icons/io';
 import { RiDeleteBinFill } from 'react-icons/ri';
+import { useState, useEffect } from 'react';
 
 function CartItem({ data }) {
-  console.log(data);
+  const [state, setState] = useState({});
+
+  const { image, name, timeadded, price, quantity, productid, userid } = state;
+
+  const handleQuantity = (type) => {
+    if (type === '+') {
+      setState({ ...state, quantity: state.quantity + 1 });
+    } else if (type === '-') {
+      if (state.quantity === 0) {
+        return;
+      }
+      setState({ ...state, quantity: state.quantity - 1 });
+    }
+  };
+
+  useEffect(() => {
+    if (data.userid) {
+      if (Number(data.quantity)) {
+        setState(data);
+      } else {
+        setState({ ...data, quantity: 0 });
+      }
+    }
+  }, []);
+
+  const handleSubmit = () => {
+    fetch('/api/v1/cart', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userId: userid,
+        productId: productid,
+        q: quantity,
+      }),
+    });
+  };
+
   return (
     <div className="cart__item">
       <div className="img__counter">
-        <img src={data.avatar} alt="" />
+        <img src={image} alt="" />
       </div>
 
       <div className="details__box">
         <div>
-          <h3>hello world</h3>
+          <h3>{name}</h3>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam soluta
             repellendus illo totam, odio officiis optio a incidunt aut
@@ -22,23 +61,31 @@ function CartItem({ data }) {
           </p>
         </div>
         <p>
-          added at: <span>{data.timeadded}</span>
+          added at: <span>{timeadded}</span>
         </p>
       </div>
 
       <div className="img__counter">
         <div className="control">
-          <p>50$</p>
+          <p>${price * quantity}</p>
           <div>
-            <io.IoIosArrowUp className="btn" />
-            <p>{data.quantity}</p>
-            <io.IoIosArrowDown className="btn" />
+            <io.IoIosArrowUp
+              className="btn"
+              onClick={() => handleQuantity('+')}
+            />
+            <p>{state.quantity || 0}</p>
+            <io.IoIosArrowDown
+              className="btn"
+              onClick={() => handleQuantity('-')}
+            />
           </div>
           <RiDeleteBinFill className="delete__btn" />
         </div>
 
         <div className="save__btn">
-          <button type="button">save change</button>
+          <button type="button" onClick={handleSubmit}>
+            save change
+          </button>
         </div>
       </div>
     </div>

@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
-// import logo from './logo.svg';
-import Cart from './Components/Cart';
-// import SignUp from './Components/signupPage';
+import logo from './logo.svg';
 
 function App() {
   useEffect(() => {
@@ -10,26 +8,22 @@ function App() {
       .then((res) => console.log(res));
   }, []);
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
-    <>
-      {/* <SignUp /> */}
-      <Cart />
-    </>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
