@@ -8,6 +8,7 @@ import Landing from './Components/landing';
 import Products from './Components/Products';
 import SingleProduct from './Components/ProductPage';
 import Cart from './Components/Cart';
+import Logout from './Components/logout';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       },
       { path: 'products/:id', element: <SingleProduct /> },
       { path: 'cart', element: <Cart /> },
+      { path: 'logout', element: <Logout /> },
     ],
   },
   { path: '*', element: <h1>Not Found</h1> },
