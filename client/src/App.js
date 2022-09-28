@@ -1,11 +1,30 @@
-import Products from './Components/Products';
+
+//import { useEffect } from 'react';
+import logo from './logo.svg';
+// import Login from './Components/loginPage';
+
 // import SignUp from './Components/signupPage';
-import './global_style.css';
+// import './global_style.css';
+
 
 function App() {
   return (
     <div className="App">
-      <Products />
+
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }

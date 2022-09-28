@@ -89,7 +89,7 @@ const index = () => {
                   name="email"
                   id="email"
                   placeholder="email"
-                  onClick={(e) => changeLoginFormData(e)}
+                  onChange={(e) => changeLoginFormData(e)}
                   className={loginError?.name === 'email' ? 'inputError' : ''}
                 />
                 <span className="errorLabel">
@@ -105,7 +105,7 @@ const index = () => {
                   className={
                     loginError?.name === 'password' ? 'inputError' : ''
                   }
-                  onClick={(e) => changeLoginFormData(e)}
+                  onChange={(e) => changeLoginFormData(e)}
                 />
                 <span className="errorLabel">
                   {loginError?.name === 'password' ? loginError.error : ''}
