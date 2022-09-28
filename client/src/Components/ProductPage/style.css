@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
 }
 
 :root {
@@ -15,6 +14,7 @@
 }
 
 .product-popup {
+  font-family: 'Roboto', sans-serif;
   position: fixed;
   top: 0;
   left: 0;

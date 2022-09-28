@@ -1,4 +1,4 @@
-import { useOutletContext } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import './style.css';
 
 // eslint-disable-next-line react/prop-types
@@ -10,19 +10,19 @@ export default function LandingPage() {
     <>
       <section className="section-one">
         <div className="container">
-          <h1>Aligrandpa</h1>
-          <p>All the tech you need in one click</p>
-          <a href="/" className="home-button">
+          <h1 className="sitename">Aligrandpa</h1>
+          <p className="landingp">All the tech you need in one click</p>
+          <Link to="/products" className="home-button">
             Browse Our Products
-          </a>
+          </Link>
         </div>
       </section>
 
       <section className="section-two">
         <div className="container-two">
           <div className="container-two-content content">
-            <h1>Our Vision</h1>
-            <p>
+            <h1 className="sitename">Our Vision</h1>
+            <p className="landingp">
               Technology made people’s lives easier and more luxurious, while
               also generating revenue for businesses. People and industries
               gradually began to rely on technology to get things done because
@@ -30,7 +30,7 @@ export default function LandingPage() {
               point that we are becoming slaves to the very technologies we
               invented.
             </p>
-            <p>
+            <p className="landingp">
               We’re here to sell you our products, become our slave and give us
               your money hehe
             </p>
