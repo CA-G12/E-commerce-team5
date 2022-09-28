@@ -28,7 +28,7 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    cart (
+cart (
         userId INT NOT NULL,
         productId INT NOT NULL,
         quantity INT DEFAULT 1,

@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 
 const app = express();
 require('dotenv').config();
@@ -9,7 +10,7 @@ const cookieParser = require('cookie-parser');
 const router = require('./router');
 
 app.set('port', process.env.PORT || 4000);
-
+app.use(morgan('dev'));
 app.use(compression());
 app.use(cookieParser());
 app.use(express.json());
