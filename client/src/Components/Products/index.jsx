@@ -40,7 +40,7 @@ export default function Products({ userData }) {
   return (
     <div className="products-container">
       {products.map((product) => (
-        <ProductCart key={product.id} productData={product} />
+        <ProductCart key={product.id} productData={product} user={user} />
       ))}
     </div>
   );
