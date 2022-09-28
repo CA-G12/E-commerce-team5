@@ -1,17 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import CartItem from '../CartItem';
 import '../../global_style.css';
 import './style.css';
-
-// const postCart = () =>
-//   fetch('/api/v1/cart', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({ productId: 1 }),
-//   });
+import CartItem from '../CartItem';
 
 const getCart = () => fetch('/api/v1/cart').then((data) => data.json());
 
@@ -21,9 +12,6 @@ function Cart() {
   const [user, setUser] = useOutletContext();
 
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   postCart();
-  // }, []);
 
   useEffect(() => {
     if (user.loggedIn) {
