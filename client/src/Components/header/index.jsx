@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 // import { useState, useEffect } from 'react';
 import './style.css';
+import { Link } from 'react-router-dom';
 import { BsFillCartFill } from 'react-icons/bs';
 import { RiLogoutBoxLine } from 'react-icons/ri';
 
@@ -25,12 +26,12 @@ export default function Header({ user }) {
             {user.username}
           </button>
           <div className="dropdown-content">
-            <a href={`/cart/${user.id}`}>
+            <Link className="link" to="/cart">
               my Cart <BsFillCartFill />
-            </a>
-            <a href="/logout">
+            </Link>
+            <Link className="link" to="/logout">
               Logout <RiLogoutBoxLine />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -41,9 +42,9 @@ export default function Header({ user }) {
         <h1>Aligrandpa</h1>
       </section>
       <section>
-        <a className="login-sign" href="/login">
+        <Link className="login-sign link" to="/login">
           Log In
-        </a>
+        </Link>
       </section>
     </nav>
   );
