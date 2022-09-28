@@ -32,7 +32,6 @@ const index = () => {
           setLoginError(data);
         } else {
           // redirect
-          console.log('logged');
         }
       });
   };
