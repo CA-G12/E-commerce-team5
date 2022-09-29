@@ -9,7 +9,10 @@ const {
   getProductsQuery,
   getSingleProductQuery,
   searchProductsQuery,
+  getProductsByOffsetQuery,
+  getProductsCountQuery,
 } = require('./products');
+const getCategoriesQuery = require('./categories/getCategories');
 
 module.exports = {
   addUserQuery,
@@ -21,4 +24,7 @@ module.exports = {
   getProductsQuery,
   updateCartQuery,
   searchProductsQuery,
+  getProductsByOffsetQuery,
+  getProductsCountQuery,
+  getCategoriesQuery,
 };
