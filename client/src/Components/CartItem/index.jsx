@@ -6,6 +6,7 @@ import { RiDeleteBinFill } from 'react-icons/ri';
 import { useState, useEffect } from 'react';
 
 import { ToastContainer, toast } from 'react-toastify';
+import NotFound from '../ProductCard/broken1.png';
 import 'react-toastify/dist/ReactToastify.css';
 
 const getCart = () => fetch('/api/v1/cart').then((data) => data.json());
@@ -69,7 +70,21 @@ function CartItem({ data, setCartItem }) {
   return (
     <div className="cart__item">
       <div className="img__counter">
-        <img src={image} alt="" />
+        <img
+          src={image || NotFound}
+          alt=""
+          onError={(e) => {
+            e.target.src = NotFound;
+          }}
+        />
+        {/* <img
+        className="product-image"
+        src={productData.image || NotFound}
+        alt={productData.name}
+        onError={(e) => {
+          e.target.src = NotFound;
+        }}
+      /> */}
       </div>
 
       <div className="details__box">
