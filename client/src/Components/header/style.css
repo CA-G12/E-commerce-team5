@@ -12,16 +12,25 @@
     text-decoration: none;
     color:black;
 }
+.link-cart{
+  text-decoration: none;
+  color:black;
+  justify-self: center;
+}
 .link:hover{
     text-shadow: #EEEEEE;
     
+}
+.userdata{
+  display: flex;
+  
 }
 .header{
     display: flex;
     justify-content:space-between;
     align-items: center;
-    background-color:#EEEEEE;
-    padding: 1rem 0rem 1rem 2rem;
+    background-color:#adadad;
+    padding: 0rem 0rem 0rem 2rem;
 }
 /* Style The Dropdown Button */
 .dropbtn {
@@ -33,7 +42,8 @@
     font-size: 16px;
     border: none;
     width:fit-content;
-    padding:0.5rem 3rem 0.5rem 1rem;
+    height:100%;
+    padding:0.5rem 0.5rem 0.5rem 0.5rem;
     cursor: pointer;
   }
   
@@ -48,7 +58,6 @@
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }

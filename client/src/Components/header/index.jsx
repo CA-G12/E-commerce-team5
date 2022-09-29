@@ -14,28 +14,32 @@ export default function Header({ user }) {
         </Link>
       </section>
       <section>
-        <div className="dropdown">
-          <button className="dropbtn" type="button">
-            <div
-              className="userAvatar"
-              style={{
-                backgroundImage: `url(${
-                  user.avatar ||
-                  `https://ui-avatars.com/api/?name=${user.username}&background=random`
-                })`,
-              }}
-            />
-            {user.username}
-          </button>
-          <div className="dropdown-content">
-            <Link className="link" to="/cart">
-              my Cart <BsFillCartFill />
-            </Link>
-            <Link className="link" to="/logout">
-              Logout <RiLogoutBoxLine />
-            </Link>
+        <section className="userdata">
+          <Link className="link-cart" to="/cart">
+            <BsFillCartFill />
+          </Link>
+        </section>
+        <section>
+          <div className="dropdown">
+            <button className="dropbtn" type="button">
+              <div
+                className="userAvatar"
+                style={{
+                  backgroundImage: `url(${
+                    user.avatar ||
+                    `https://ui-avatars.com/api/?name=${user.username}&background=random`
+                  })`,
+                }}
+              />
+            </button>
+            <div className="dropdown-content">
+              <p className="link">{user.username}</p>
+              <Link className="link" to="/logout">
+                Logout <RiLogoutBoxLine />
+              </Link>
+            </div>
           </div>
-        </div>
+        </section>
       </section>
     </nav>
   ) : (
