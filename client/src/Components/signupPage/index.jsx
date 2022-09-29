@@ -6,7 +6,7 @@ import './style.css';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { useState } from 'react';
 import { Link, useNavigate, useOutletContext } from 'react-router-dom';
-import SearchLoading from '../searchLoading';
+import SearchLoading from '../loadingSpinner';
 
 const index = () => {
   const [user, setUser] = useOutletContext();
