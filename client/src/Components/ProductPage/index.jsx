@@ -10,16 +10,6 @@ export default function ProductPage() {
   const [inCart, setInCart] = useState(!user.loggedIn ? false : null);
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
-  // const product = {
-  //   category_name: 'Running shoes',
-  //   categoryid: 2,
-  //   id: 3,
-  //   image:
-  //     'https://o.remove.bg/downloads/bc1f5ad6-bb26-4e98-8df8-8cfbe0874ea8/png-transparent-nike-free-nike-air-max-sneakers-shoe-red-shoes-thumbnail-removebg-preview.png',
-  //   inCart: false,
-  //   name: 'Running Shoes',
-  //   price: '20',
-  // };
   useEffect(() => {
     console.log('hiiiiiiiiiiii', id);
 
@@ -44,26 +34,8 @@ export default function ProductPage() {
             }
           });
         });
-      // Promise.all([p1, p2])
-      //   .then((values) => {
-      //     console.log(values);
-      //     values[1].forEach((element) => {
-      //       console.log(id, element.id);
-      //       if (element.id === id) {
-      //         setInCart(true);
-      //         console.log('in inside if', inCart);
-      //       }
-      //     });
-      //   })
-      //   .then(() => console.log('inCart', inCart));
     }
   }, []);
-
-  // if the user in not logged in then inCart is always false and when clicking in add To cart
-  // he will be navigated to the login page.
-
-  // if the user if logged in then i will check if the product is in his cart
-  // if it is I will set the inCart to be true else it would be false.
 
   const addToCart = () => {
     if (user.loggedIn) {
@@ -110,7 +82,10 @@ export default function ProductPage() {
           </div>
         </div>
         <div className="product__info">
-          <AiFillCloseCircle className=" close-icon" />
+          <AiFillCloseCircle
+            className=" close-icon"
+            onClick={() => navigate('/products')}
+          />
           <div className="title">
             <h1>{product.name} </h1>
             <span>CODE: {product.id} </span>

@@ -15,7 +15,7 @@ export default function ProductCart(props) {
   const navigate = useNavigate();
 
   const iconStyle = {
-    color: '#6fa5a3',
+    color: '#20d1cb',
     fontSize: '2rem',
   };
   const addToCart = () => {
@@ -53,6 +53,7 @@ export default function ProductCart(props) {
     navigate(`/products/${productData.id}`);
   };
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div className="card-container">
       <img
         className="product-image"

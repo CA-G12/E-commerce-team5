@@ -52,7 +52,7 @@ const index = () => {
             </p>
           </div>
           <div className="login-sochial">
-            <a href="/">
+            <Link href="/">
               <svg
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ const index = () => {
                 </g>
               </svg>
               Continue with Google
-            </a>
+            </Link>
           </div>
           <div className="divider">
             <span>OR</span>
