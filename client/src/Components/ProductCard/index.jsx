@@ -52,14 +52,16 @@ export default function ProductCart(props) {
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div className="card-container">
-      <img
-        className="product-image"
-        src={productData.image || NotFound}
-        alt={productData.name}
-        onError={(e) => {
-          e.target.src = NotFound;
-        }}
-      />
+      <div className="product-img-cont">
+        <img
+          className="product-image"
+          src={productData.image || NotFound}
+          alt={productData.name}
+          onError={(e) => {
+            e.target.src = NotFound;
+          }}
+        />
+      </div>
       <div className="card-category">
         <p>{productData.category_name}</p>
       </div>
