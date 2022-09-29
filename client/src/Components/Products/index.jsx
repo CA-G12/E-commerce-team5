@@ -27,6 +27,7 @@ export default function Products({ userData }) {
   const [categories, setCategories] = useState(null);
   const [categoryId, setCategoryId] = useState();
   const [productsCount, setProductsCount] = useState(0);
+  const [off, setoff] = useState(1);
   const [user, setUser] = useOutletContext();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -63,7 +64,6 @@ export default function Products({ userData }) {
   useEffect(() => {
     const q = searchParams.get('q') || ' ';
     const c = categoryId || 'all';
-    console.log(q, c);
     let timer;
     if (c) {
       setLoading(true);
@@ -88,6 +88,7 @@ export default function Products({ userData }) {
   }, [searchParams.get('q'), categoryId]);
 
   const handlePagination = (e) => {
+    setoff(e.target.textContent);
     const offset = (Number(e.target.textContent) - 1) * 10;
     setLoading(true);
     fetch(`/api/v1/products/page/${offset}`)
@@ -97,46 +98,48 @@ export default function Products({ userData }) {
         setLoading(false);
       });
   };
-  console.log(categories);
   if (!products) {
     return <Loading />;
   }
   return (
     <div className="container">
-      <input
-        value={searchParams?.q}
-        placeholder="search"
-        className="search-input"
-        onChange={(e) =>
-          setSearchParams({
-            q: e.target.value,
-            category: searchParams.get('category') || 'all',
-          })
-        }
-      />
-      {categories && (
-        <select
-          name="category"
-          id=""
-          onChange={(e) => {
-            setCategoryId(e.target.value);
-            // eslint-disable-next-line eqeqeq
-            const category = categories.filter((c) => c.id == e.target.value)[0]
-              .name;
+      <div className="filters">
+        <input
+          value={searchParams?.q}
+          placeholder="search"
+          className="search-input"
+          onChange={(e) =>
             setSearchParams({
-              q: searchParams.get('q') || '',
-              category,
-            });
-          }}
-        >
-          <option value="">All</option>
-          {categories.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.name}
-            </option>
-          ))}
-        </select>
-      )}
+              q: e.target.value,
+              category: searchParams.get('category') || 'all',
+            })
+          }
+        />
+        {categories && (
+          <select
+            name="category"
+            id=""
+            onChange={(e) => {
+              setCategoryId(e.target.value);
+              const category = categories.filter(
+                // eslint-disable-next-line eqeqeq
+                (c) => c.id == e.target.value
+              )[0].name;
+              setSearchParams({
+                q: searchParams.get('q') || '',
+                category,
+              });
+            }}
+          >
+            <option value="">All</option>
+            {categories.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        )}
+      </div>
       <div
         className="products-container"
         style={{ position: 'relative', paddingBottom: '100px' }}
@@ -164,7 +167,9 @@ export default function Products({ userData }) {
                   // eslint-disable-next-line no-undef, no-loop-func
                   onClick={(e) => handlePagination(e)}
                   style={{
-                    backgroundColor: '#6fa5a3',
+                    backgroundColor:
+                      // eslint-disable-next-line eqeqeq
+                      off == btn ? '#20D1CB' : 'rgb(200,200,200)',
                     padding: '.5rem 1rem',
                     border: 'none',
                     outline: 'none',
