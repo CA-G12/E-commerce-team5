@@ -44,8 +44,7 @@ function CartItem({ data }) {
         productId: id,
         q: quantity,
       }),
-    }).then(() => notify);
-    // notify();
+    }).then(() => notify());
   };
 
   return (
@@ -95,7 +94,18 @@ function CartItem({ data }) {
           </button>
         </div>
       </div>
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        toastStyle={{ backgroundColor: 'black', color: '#14a44d' }}
+      />
     </div>
   );
 }
