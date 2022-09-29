@@ -11,3 +11,6 @@
   width: 500px;
   border-radius: 10px;
 }
+.no-data-found h2 {
+  color: rgb(155, 155, 155);
+}
