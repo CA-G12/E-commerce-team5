@@ -1,39 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Hubballi&family=IBM+Plex+Sans&family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap%27');
 *{
     padding: 0;
     margin:0;
     box-sizing: border-box;
 }
-.header{
-    font-family: 'Indie Flower', cursive;
-    font-size: 30px;
-}
 .link{
     text-decoration: none;
     color:black;
+}
+.link-cart{
+  text-decoration: none;
+  color:black;
 }
 .link:hover{
     text-shadow: #EEEEEE;
     
 }
+.cart-logo{
+  color:#20D1CB;
+}
+.userdata{
+  display: flex;
+  width: 8%;
+  justify-content: space-between;
+  align-items: center;
+}
 .header{
-    display: flex;
-    justify-content:space-between;
+    font-family: 'Jockey One', sans-serif;
+    font-size: 25px;
     align-items: center;
-    background-color:#EEEEEE;
-    padding: 1rem 0rem 1rem 2rem;
+    height: 65px;
+    background-color:#ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.header-content{
+  display: flex;
+  width: 90%;
+  height:90%;
+  justify-content: space-between;
+  align-items: center;
+  margin:auto;
 }
 /* Style The Dropdown Button */
 .dropbtn {
+    all:unset;
     background-color: #828282;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #E1E1E1;
-    font-size: 16px;
-    border: none;
-    width:fit-content;
-    padding:0.5rem 3rem 0.5rem 1rem;
+    object-fit:cover;
+    background-size:cover;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .dropbtn-nouser{
+    all:unset;
+    object-fit:cover;
+    background-size:cover;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
     cursor: pointer;
   }
   
@@ -46,9 +71,10 @@
   /* Dropdown Content (Hidden by Default) */
   .dropdown-content {
     display: none;
+    font-size: 15px;
     position: absolute;
+    width:7rem;
     background-color: #f9f9f9;
-    min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
@@ -74,15 +100,11 @@
     color:#828282;
     background-color: #f9f9f9;
   }
-  .userAvatar{
-    object-fit:cover;
-    background-size:cover;
-    margin-right: 2rem;
-    height: 4rem;
-    width: 4rem;
-    border-radius: 50%;
-  }
   .login-sign{
-    padding-right: 2rem;
     font-size: 25px;
+  }
+  .site-logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
