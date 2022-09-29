@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
+import './styles.css';
 import { useState, useEffect } from 'react';
 import {
   useNavigate,
@@ -101,10 +102,11 @@ export default function Products({ userData }) {
     return <Loading />;
   }
   return (
-    <>
+    <div className="container">
       <input
         value={searchParams?.q}
         placeholder="search"
+        className="search-input"
         onChange={(e) =>
           setSearchParams({
             q: e.target.value,
@@ -142,7 +144,7 @@ export default function Products({ userData }) {
         {loading && <Loading />}
         {!loading && products.length > 0
           ? products.map((product) => (
-              <ProductCart key={product.id} productData={product} />
+              <ProductCart key={product.id} productData={product} user={user} />
             ))
           : !loading && <NoData />}
         {!loading && products.length > 0 && (
@@ -180,6 +182,6 @@ export default function Products({ userData }) {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }

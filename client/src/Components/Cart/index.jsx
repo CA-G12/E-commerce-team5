@@ -3,6 +3,7 @@ import { useNavigate, useOutletContext } from 'react-router-dom';
 import '../../global_style.css';
 import './style.css';
 import CartItem from '../CartItem';
+import EmptyCart from '../CartItem/EmptyCart';
 
 const getCart = () => fetch('/api/v1/cart').then((data) => data.json());
 
@@ -25,9 +26,18 @@ function Cart() {
   return (
     <main className="wrapper">
       <section className="content">
-        {cartItem.map((item) => (
-          <CartItem key={item.id} data={item} />
-        ))}
+        {cartItem.length ? (
+          cartItem.map((item) => (
+            <CartItem
+              key={item.id}
+              data={item}
+              id={item.id}
+              setCartItem={setCartItem}
+            />
+          ))
+        ) : (
+          <EmptyCart />
+        )}
       </section>
     </main>
   );

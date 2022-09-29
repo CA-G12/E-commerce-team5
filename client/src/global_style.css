@@ -12,10 +12,3 @@
   --danger-color: rgba(219, 49, 49, 1);
   --success-color: #14a44d;
 }
-
-.products-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  font-family: 'Roboto', sans-serif;
-}
