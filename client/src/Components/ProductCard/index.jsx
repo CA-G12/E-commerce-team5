@@ -11,10 +11,8 @@ import NotFound from './broken1.png';
 /// products user => token => id // cart // products => {incart: true}
 export default function ProductCart(props) {
   const { productData, user } = props;
-  console.log('dkjfhhhhhhhhhhhhhhhhhh', productData);
   const [inCart, setInCart] = useState(productData.inCart);
   const navigate = useNavigate();
-  console.log(user);
   const iconStyle = {
     color: '#20d1cb',
     fontSize: '2rem',
@@ -31,7 +29,6 @@ export default function ProductCart(props) {
         }),
       })
         .then((res) => res.json())
-        .then(console.log)
         .then(() => setInCart(true));
     } else {
       navigate('/login');

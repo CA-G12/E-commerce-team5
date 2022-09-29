@@ -5,7 +5,6 @@ import './style.css';
 export default function LandingPage() {
   // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useOutletContext();
-  console.log(user);
   return (
     <>
       <section className="section-one">

@@ -23,7 +23,7 @@ const makePages = (totalCount, pageSize) => {
 };
 // eslint-disable-next-line react/prop-types
 export default function Products({ userData }) {
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState(null);
   const [categoryId, setCategoryId] = useState();
   const [productsCount, setProductsCount] = useState(0);
@@ -98,9 +98,6 @@ export default function Products({ userData }) {
         setLoading(false);
       });
   };
-  if (!products) {
-    return <Loading />;
-  }
   return (
     <div className="container">
       <div className="filters">
