@@ -27,7 +27,14 @@ function Cart() {
     <main className="wrapper">
       <section className="content">
         {cartItem.length ? (
-          cartItem.map((item) => <CartItem key={item.id} data={item} />)
+          cartItem.map((item) => (
+            <CartItem
+              key={item.id}
+              data={item}
+              id={item.id}
+              setCartItem={setCartItem}
+            />
+          ))
         ) : (
           <EmptyCart />
         )}

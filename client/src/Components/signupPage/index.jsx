@@ -5,15 +5,15 @@
 import './style.css';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import SearchLoading from '../searchLoading';
 
 const index = () => {
+  const [user, setUser] = useOutletContext();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [signupError, setSignupError] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-
   const changeFormData = (e) => {
     // eslint-disable-next-line no-unused-vars
     const { name, value } = e.target;
@@ -34,6 +34,7 @@ const index = () => {
         if (data.error) {
           setSignupError(data);
         } else {
+          setUser({ ...data, loggedIn: true, checking: false });
           navigate('/');
         }
       });

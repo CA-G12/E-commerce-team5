@@ -9,6 +9,7 @@ import Products from './Components/Products';
 import SingleProduct from './Components/ProductPage';
 import Cart from './Components/Cart';
 import Logout from './Components/logout';
+import PageNotFound from './Components/pageNotFound';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       { path: 'logout', element: <Logout /> },
     ],
   },
-  { path: '*', element: <h1>Not Found</h1> },
+  { path: '*', element: <PageNotFound /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
