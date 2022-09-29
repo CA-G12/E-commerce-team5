@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Hubballi&family=IBM+Plex+Sans&family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap%27');
 *{
     padding: 0;
     margin:0;
     box-sizing: border-box;
 }
 .header{
-    font-family: 'Indie Flower', cursive;
-    font-size: 30px;
+    font-family: 'Jockey One', sans-serif;
+    font-size: 25px;
 }
 .link{
     text-decoration: none;
@@ -15,35 +15,53 @@
 .link-cart{
   text-decoration: none;
   color:black;
-  justify-self: center;
+  padding-right:4rem;
 }
 .link:hover{
     text-shadow: #EEEEEE;
     
 }
+.cart-logo{
+  color:#20D1CB;
+}
 .userdata{
   display: flex;
-  
+  align-items: center;
 }
 .header{
     display: flex;
     justify-content:space-between;
     align-items: center;
-    background-color:#adadad;
-    padding: 0rem 0rem 0rem 2rem;
+    background-color:#ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 0rem 0rem 0rem 1rem;
 }
 /* Style The Dropdown Button */
 .dropbtn {
+    all:unset;
     background-color: #828282;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #E1E1E1;
-    font-size: 16px;
-    border: none;
-    width:fit-content;
-    height:100%;
-    padding:0.5rem 0.5rem 0.5rem 0.5rem;
+    object-fit:cover;
+    background-size:cover;
+    margin: 0.5rem 6rem 0.5rem 0.5rem;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .dropbtn-nouser{
+    all:unset;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    object-fit:cover;
+    background-size:cover;
+    margin: 0.5rem 6rem 0.5rem 0.5rem;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
     cursor: pointer;
   }
   
@@ -56,6 +74,7 @@
   /* Dropdown Content (Hidden by Default) */
   .dropdown-content {
     display: none;
+    font-size: 20px;
     position: absolute;
     background-color: #f9f9f9;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -82,16 +101,12 @@
   .dropdown:hover .dropbtn {
     color:#828282;
     background-color: #f9f9f9;
-  }
-  .userAvatar{
-    object-fit:cover;
-    background-size:cover;
-    margin-right: 2rem;
-    height: 4rem;
-    width: 4rem;
-    border-radius: 50%;
+    margin-right: 6rem;
   }
   .login-sign{
     padding-right: 2rem;
     font-size: 25px;
+  }
+  .logo-link{
+    padding-left: 4rem;
   }
