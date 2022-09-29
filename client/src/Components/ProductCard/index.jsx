@@ -6,6 +6,7 @@ import './style.css';
 import { BsCartPlus, BsCartFill, BsQuestionCircleFill } from 'react-icons/bs';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import NotFound from './broken1.png';
 
 /// products user => token => id // cart // products => {incart: true}
 export default function ProductCart(props) {
@@ -44,7 +45,6 @@ export default function ProductCart(props) {
       },
     })
       .then((res) => res.json())
-      .then(console.log)
       .then(() => {
         setInCart(false);
       });
@@ -57,8 +57,11 @@ export default function ProductCart(props) {
     <div className="card-container">
       <img
         className="product-image"
-        src={productData.image}
+        src={productData.image || NotFound}
         alt={productData.name}
+        onError={(e) => {
+          e.target.src = NotFound;
+        }}
       />
       <div className="card-category">
         <p>{productData.category_name}</p>

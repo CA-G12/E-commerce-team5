@@ -5,9 +5,27 @@ import * as io from 'react-icons/io';
 import { RiDeleteBinFill } from 'react-icons/ri';
 import { useState, useEffect } from 'react';
 
-function CartItem({ data }) {
-  const [state, setState] = useState(data);
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+const getCart = () => fetch('/api/v1/cart').then((data) => data.json());
+
+const deleteCart = ({ id, setCartItem }) => {
+  fetch(`/api/v1/cart/${id}`, {
+    method: 'delete',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((res) => res.json())
+    .then(() => getCart())
+    .then((data) => {
+      setCartItem(data);
+    });
+};
+function CartItem({ data, setCartItem }) {
+  const [state, setState] = useState(data);
+  const notify = () => toast('saved successfully!');
   const { image, name, timeadded, price, quantity, id } = state;
 
   const handleQuantity = (type) => {
@@ -31,6 +49,10 @@ function CartItem({ data }) {
     }
   }, []);
 
+  const handleDelete = () => {
+    deleteCart({ id, userId: data.userId, setCartItem });
+  };
+
   const handleSubmit = () => {
     fetch('/api/v1/cart', {
       method: 'PATCH',
@@ -41,7 +63,7 @@ function CartItem({ data }) {
         productId: id,
         q: quantity,
       }),
-    });
+    }).then(() => notify());
   };
 
   return (
@@ -68,7 +90,7 @@ function CartItem({ data }) {
         </p>
       </div>
 
-      <div className="img__counter">
+      <div className="img__counter buttons_container">
         <div className="control">
           <p>${price * quantity}</p>
           <div>
@@ -82,7 +104,7 @@ function CartItem({ data }) {
               onClick={() => handleQuantity('-')}
             />
           </div>
-          <RiDeleteBinFill className="delete__btn" />
+          <RiDeleteBinFill className="delete__btn" onClick={handleDelete} />
         </div>
 
         <div className="save__btn">
@@ -91,6 +113,18 @@ function CartItem({ data }) {
           </button>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        toastStyle={{ backgroundColor: 'black', color: '#14a44d' }}
+      />
     </div>
   );
 }
