@@ -12,24 +12,20 @@ import { BiUserPlus } from 'react-icons/bi';
 export default function Header({ user }) {
   return user.loggedIn ? (
     <nav className="header">
-      <section>
-        <Link to="/" className="link">
-          <h1 className="logo-link">
-            <FaOpencart
-              size={40}
-              style={{ color: '#20D1CB', paddingRight: '10px' }}
-            />
-            Aligrandpa
-          </h1>
-        </Link>
-      </section>
-      <section className="userdata">
-        <section>
+      <section className="header-content">
+        <section className="site-logo">
+          <FaOpencart
+            size={40}
+            style={{ color: '#20D1CB', paddingRight: '10px' }}
+          />
+          <Link to="/" className="link">
+            <h1 className="logo-link">Aligrandpa</h1>
+          </Link>
+        </section>
+        <section className="userdata">
           <Link className="link-cart" to="/cart">
             <BsFillCartFill size={40} />
           </Link>
-        </section>
-        <section>
           <div className="dropdown">
             <button
               className="dropbtn"
@@ -41,7 +37,6 @@ export default function Header({ user }) {
                 })`,
               }}
             />
-
             <div className="dropdown-content">
               <Link className="link" to="/products">
                 {user.username}
@@ -56,36 +51,33 @@ export default function Header({ user }) {
     </nav>
   ) : (
     <nav className="header">
-      <section>
-        <Link to="/" className="link">
-          <h1 className="logo-link">
-            <FaOpencart
-              size={40}
-              style={{ color: '#20D1CB', paddingRight: '10px' }}
-            />
-            Aligrandpa
-          </h1>
-        </Link>
-      </section>
-      <section className="userdata">
-        <section>
-          <div className="dropdown">
-            <button className="dropbtn-nouser" type="button">
-              <FaUserAlt size={30} />
-            </button>
+      <section className="header-content">
+        <section className="site-logo">
+          <FaOpencart
+            size={40}
+            style={{ color: '#20D1CB', paddingRight: '10px' }}
+          />
+          <Link to="/" className="link">
+            <h1 className="logo-link">Aligrandpa</h1>
+          </Link>
+        </section>
+        <section className="userdata">
+          <section>
+            <div className="dropdown">
+              <button className="dropbtn-nouser" type="button">
+                <FaUserAlt size={30} />
+              </button>
 
-            <div className="dropdown-content">
-              <Link className="link" to="/products">
-                {user.username}
-              </Link>
-              <Link className="link" to="/signup">
-                <BiUserPlus /> Sign up
-              </Link>
-              <Link className="link" to="/login">
-                <FiLogIn /> Log in
-              </Link>
+              <div className="dropdown-content">
+                <Link className="link" to="/signup">
+                  <BiUserPlus /> Sign up
+                </Link>
+                <Link className="link" to="/login">
+                  <FiLogIn /> Log in
+                </Link>
+              </div>
             </div>
-          </div>
+          </section>
         </section>
       </section>
     </nav>
