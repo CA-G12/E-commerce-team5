@@ -103,7 +103,7 @@ VALUES (
         200,
         1
     ), (
-        'Sony Headphones',
+        'Sony Headphone',
         'https://www.pngmart.com/files/6/Sony-Headphone-PNG-Transparent-Picture.png',
         200,
         1
