@@ -1,13 +1,15 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
 // import React from 'react';
-import './style.css';
-import { FaRegWindowClose } from 'react-icons/fa';
-import { useState } from 'react';
-import { Link, useNavigate, useOutletContext } from 'react-router-dom';
-import SearchLoading from '../loadingSpinner';
+import "./style.css";
+import { FaRegWindowClose } from "react-icons/fa";
+import { useState } from "react";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import SearchLoading from "../loadingSpinner";
 
-function Index() {
+
+const Index = () => {
   const [user, setUser] = useOutletContext();
   const navigate = useNavigate();
   const [loginFormData, setLoginFormData] = useState({});
@@ -21,10 +23,10 @@ function Index() {
 
   const loginReq = () => {
     setIsLoading(true);
-    fetch('/api/v1/login', {
-      method: 'POST',
+    fetch("/api/v1/login", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(loginFormData),
     })
@@ -35,7 +37,7 @@ function Index() {
           setLoginError(data);
         } else {
           setUser({ ...data, loggedIn: true, checking: false });
-          navigate('/');
+          navigate("/");
         }
       });
   };
@@ -94,10 +96,10 @@ function Index() {
                   id="email"
                   placeholder="email"
                   onChange={(e) => changeLoginFormData(e)}
-                  className={loginError?.name === 'email' ? 'inputError' : ''}
+                  className={loginError?.name === "email" ? "inputError" : ""}
                 />
                 <span className="errorLabel">
-                  {loginError?.name === 'email' ? loginError.error : ''}
+                  {loginError?.name === "email" ? loginError.error : ""}
                 </span>
               </div>
               <div className="input-box">
@@ -107,12 +109,12 @@ function Index() {
                   id="password"
                   placeholder="password"
                   className={
-                    loginError?.name === 'password' ? 'inputError' : ''
+                    loginError?.name === "password" ? "inputError" : ""
                   }
                   onChange={(e) => changeLoginFormData(e)}
                 />
                 <span className="errorLabel">
-                  {loginError?.name === 'password' ? loginError.error : ''}
+                  {loginError?.name === "password" ? loginError.error : ""}
                 </span>
               </div>
               <button type="button" onClick={(e) => loginReq()}>

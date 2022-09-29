@@ -1,17 +1,17 @@
-import { useEffect } from 'react';
-import { Triangle } from 'react-loader-spinner';
-import { useNavigate, useOutletContext } from 'react-router-dom';
-import './style.css';
+import { useEffect } from "react";
+import { Triangle } from "react-loader-spinner";
+import { useNavigate, useOutletContext } from "react-router-dom";
+import "./style.css";
 
-const index = () => {
+const Index = () => {
   const navigate = useNavigate();
   const [user, setUser] = useOutletContext();
   useEffect(() => {
-    fetch('/api/v1/logout')
+    fetch("/api/v1/logout")
       .then((data) => data.json())
       .then(() => {
         setUser({ ...user, loggedIn: false });
-        navigate('/');
+        navigate("/");
       });
   }, []);
 
@@ -30,4 +30,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
