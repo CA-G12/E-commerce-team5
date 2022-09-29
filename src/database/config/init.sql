@@ -23,6 +23,7 @@ CREATE TABLE
         name VARCHAR(200),
         image TEXT,
         price decimal,
+        description text,
         categoryId INT,
         CONSTRAINT FKcategoryId FOREIGN KEY (categoryId) REFERENCES categories(id) ON DELETE CASCADE
     );
@@ -58,7 +59,7 @@ VALUES (
     );
 
 INSERT INTO categories (name)
-VALUES ('Smart watches'), ('Running shoes');
+VALUES ('Headphones'), ('Mobile phones'), ('Laptops'), ('Mouses'), ('Keyboards'),('Smart watches');
 
 INSERT INTO
     products (name, image, price, categoryId)
@@ -66,49 +67,98 @@ VALUES (
         'Wyze watch',
         'https://cdn.shopify.com/s/files/1/0580/0450/4738/products/47cblue3.png?v=1651261060&width=1500',
         50,
-        1
+        6
     ), (
         'Apple watch',
         'https://fastexpo.net/wp-content/uploads/2019/10/Apple-Watch-Apple-Watch-Iwatch-PNG-Image.png',
         200,
-        1
+        6
     ), (
         'Sony Headphones',
         'https://www.pngmart.com/files/6/Sony-Headphone-PNG-Transparent-Picture.png',
         200,
         1
-    ),(
-        'Wyze watch',
-        'https://cdn.shopify.com/s/files/1/0580/0450/4738/products/47cblue3.png?v=1651261060&width=1500',
-        50,
-        1
-    ), (
-        'Apple watch',
-        'https://fastexpo.net/wp-content/uploads/2019/10/Apple-Watch-Apple-Watch-Iwatch-PNG-Image.png',
+    ) , (
+        'Beats Solo 2',
+        'https://pngimg.com/uploads/headphones/small/headphones_PNG101980.png',
         200,
         1
     ), (
-        'Sony Headphones',
-        'https://www.pngmart.com/files/6/Sony-Headphone-PNG-Transparent-Picture.png',
+        'Nove',
+        'https://pngimg.com/uploads/headphones/headphones_PNG101947.png',
         200,
         1
     ), (
-        'Wyze watch',
-        'https://cdn.shopify.com/s/files/1/0580/0450/4738/products/47cblue3.png?v=1651261060&width=1500',
-        50,
-        1
+        'iPhone 14 Pro', 
+        'https://www.pngall.com/wp-content/uploads/13/iPhone-14-Pro-PNG-Pic.png', 
+        100, 
+        2
     ), (
-        'Apple watch',
-        'https://fastexpo.net/wp-content/uploads/2019/10/Apple-Watch-Apple-Watch-Iwatch-PNG-Image.png',
-        200,
-        1
+        'A12s Samsung', 
+        'https://shop.samsung.com/latin/pub/media/catalog/product/cache/a69170b4a4f0666a52473c2224ba9220/g/a/galaxy_sm-a12_a12.png', 
+        800, 
+        2
     ), (
-        'Sony Headphone',
-        'https://www.pngmart.com/files/6/Sony-Headphone-PNG-Transparent-Picture.png',
-        200,
-        1
-    ) ;
-
+        'HP Laptop', 
+        'https://www.transparentpng.com/thumb/laptop/9oRuDc-refreshed-pavilion-gaming-series-launching-next-month.png', 
+        1000, 
+        3
+    )
+    , (
+        'Acer Laptop', 
+        'https://static.acer.com/up/Resource/Acer/Laptops/Aspire_5/images/20200707/Acer-Aspire-5_A515-44-44G_Pure-Silver_modelmain.png', 
+        1000, 
+        3
+    ), (
+        'Dell Laptop', 
+        'https://pctrust.ca/wp-content/uploads/2022/08/Dell-XPS-13-13.3-Laptop-02.png', 
+        900, 
+        3
+    ), (
+        'GGG Keyboard', 
+        'https://www.thermaltake.com/pub/media/wysiwyg/key3/img/l20keyboard/titanium/03b.png', 
+        20, 
+        5
+    ),
+    (
+        'Razer keyboard', 
+        'https://957839.smushcdn.com/2645180/wp-content/uploads/2022/06/Razer-Ornata-Chroma-Mechanical-Gaming-Keyboard-RZ03-02040200-R3U1.png?size=1000x1000&lossy=1&strip=1&webp=1', 
+        30, 
+        5
+    ), (
+        'Air Mouse', 
+        'https://957839.smushcdn.com/2645180/wp-content/uploads/2022/03/Alienware-Wired-Wireless-Gaming-Mouse-AW610M-Dark-Side-of-the-Moon.png?size=1000x777&lossy=1&strip=1&webp=1', 
+        50, 
+        5
+    ), 
+     (
+        'Gaming Mouse', 
+        'https://957839.smushcdn.com/2645180/wp-content/uploads/2022/07/CORSAIR-NIGHTSWORD-RGB-Tunable-FPSMOBA-Gaming-Mouse-CH-9306011-AP-01.webp?size=1000x1000&lossy=1&strip=1&webp=1', 
+        10, 
+        4
+    ), 
+     (
+        'iPhone 8Pro', 
+        'https://www.pngall.com/wp-content/uploads/13/iPhone-14-Pro-PNG-Pic.png', 
+        100, 
+        2
+    ), (
+        'A13s Samsung', 
+        'https://shop.samsung.com/latin/pub/media/catalog/product/cache/a69170b4a4f0666a52473c2224ba9220/g/a/galaxy_sm-a12_a12.png', 
+        800, 
+        2
+    ), 
+     (
+        'iPhone X Pro', 
+        'https://www.pngall.com/wp-content/uploads/13/iPhone-14-Pro-PNG-Pic.png', 
+        100, 
+        2
+    ), (
+        'A20s Samsung', 
+        'https://shop.samsung.com/latin/pub/media/catalog/product/cache/a69170b4a4f0666a52473c2224ba9220/g/a/galaxy_sm-a12_a12.png', 
+        1000, 
+        2
+    );
 INSERT INTO
     cart (userId, productId, quantity)
 VALUES (1, 1, 1), (2, 1, 2);
