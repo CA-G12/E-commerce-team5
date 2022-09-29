@@ -1,27 +1,61 @@
 /* eslint-disable react/prop-types */
 import './style.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams, useOutletContext, useNavigate } from 'react-router-dom';
 
-export default function ProductPage(props) {
-  const { product } = props;
-  const [inCart, setInCart] = useState(product.inCart);
-  console.log(product);
+export default function ProductPage() {
+  const { id } = useParams();
+  const [user] = useOutletContext();
+  const [inCart, setInCart] = useState(!user.loggedIn ? false : null);
+  const [product, setProduct] = useState(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    console.log('hiiiiiiiiiiii', id);
+
+    const p1 = fetch(`/api/v1/products/${id}`).then((res) => res.json());
+    p1.then((data) => {
+      setProduct(data[0]);
+      return data;
+    }).then(() => console.log('data', product));
+
+    if (!user.loggedIn) {
+      console.log('user isnnot logged');
+      setInCart(false);
+    } else {
+      console.log('user is logged');
+
+      fetch(`/api/v1/cart`)
+        .then((res) => res.json())
+        .then((data) => {
+          data.forEach((element) => {
+            if (+element.id === +id) {
+              setInCart(true);
+            }
+          });
+        });
+    }
+  }, []);
+
   const addToCart = () => {
-    fetch(`/api/v1/cart`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        productId: product.id,
-      }),
-    })
-      .then((res) => res.json())
-      .then(console.log)
-      .then(() => {
-        setInCart(true);
-      });
+    if (user.loggedIn) {
+      fetch(`/api/v1/cart`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productId: product.id,
+        }),
+      })
+        .then((res) => res.json())
+        .then(console.log)
+        .then(() => {
+          setInCart(true);
+        });
+    } else {
+      navigate('/login');
+    }
   };
   const removeFromCart = () => {
     fetch(`/api/v1/cart/${product.id}`, {
@@ -36,6 +70,7 @@ export default function ProductPage(props) {
         setInCart(false);
       });
   };
+  if (!product) return <div>Loading...</div>;
   return (
     <section className="product-popup">
       <section className="product">
@@ -47,7 +82,10 @@ export default function ProductPage(props) {
           </div>
         </div>
         <div className="product__info">
-          <AiFillCloseCircle className=" close-icon" />
+          <AiFillCloseCircle
+            className=" close-icon"
+            onClick={() => navigate('/products')}
+          />
           <div className="title">
             <h1>{product.name} </h1>
             <span>CODE: {product.id} </span>

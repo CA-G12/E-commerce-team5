@@ -73,11 +73,41 @@ VALUES (
         200,
         1
     ), (
-        'Running Shoes',
-        'https://o.remove.bg/downloads/bc1f5ad6-bb26-4e98-8df8-8cfbe0874ea8/png-transparent-nike-free-nike-air-max-sneakers-shoe-red-shoes-thumbnail-removebg-preview.png',
-        20,
-        2
-    );
+        'Sony Headphones',
+        'https://www.pngmart.com/files/6/Sony-Headphone-PNG-Transparent-Picture.png',
+        200,
+        1
+    ),(
+        'Wyze watch',
+        'https://cdn.shopify.com/s/files/1/0580/0450/4738/products/47cblue3.png?v=1651261060&width=1500',
+        50,
+        1
+    ), (
+        'Apple watch',
+        'https://fastexpo.net/wp-content/uploads/2019/10/Apple-Watch-Apple-Watch-Iwatch-PNG-Image.png',
+        200,
+        1
+    ), (
+        'Sony Headphones',
+        'https://www.pngmart.com/files/6/Sony-Headphone-PNG-Transparent-Picture.png',
+        200,
+        1
+    ), (
+        'Wyze watch',
+        'https://cdn.shopify.com/s/files/1/0580/0450/4738/products/47cblue3.png?v=1651261060&width=1500',
+        50,
+        1
+    ), (
+        'Apple watch',
+        'https://fastexpo.net/wp-content/uploads/2019/10/Apple-Watch-Apple-Watch-Iwatch-PNG-Image.png',
+        200,
+        1
+    ), (
+        'Sony Headphones',
+        'https://www.pngmart.com/files/6/Sony-Headphone-PNG-Transparent-Picture.png',
+        200,
+        1
+    ) ;
 
 INSERT INTO
     cart (userId, productId, quantity)
