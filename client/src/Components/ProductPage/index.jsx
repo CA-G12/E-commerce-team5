@@ -11,20 +11,15 @@ export default function ProductPage() {
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    console.log('hiiiiiiiiiiii', id);
-
     const p1 = fetch(`/api/v1/products/${id}`).then((res) => res.json());
     p1.then((data) => {
       setProduct(data[0]);
       return data;
-    }).then(() => console.log('data', product));
+    });
 
     if (!user.loggedIn) {
-      console.log('user isnnot logged');
       setInCart(false);
     } else {
-      console.log('user is logged');
-
       fetch(`/api/v1/cart`)
         .then((res) => res.json())
         .then((data) => {
@@ -49,7 +44,6 @@ export default function ProductPage() {
         }),
       })
         .then((res) => res.json())
-        .then(console.log)
         .then(() => {
           setInCart(true);
         });
@@ -65,7 +59,6 @@ export default function ProductPage() {
       },
     })
       .then((res) => res.json())
-      .then(console.log)
       .then(() => {
         setInCart(false);
       });
