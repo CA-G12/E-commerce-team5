@@ -9,6 +9,7 @@
     "client": "cd client && npm start",
     "dev": "cross-env NODE_ENV=development nodemon ./src",
     "format": "prettier  --write **/*.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "lint": "npx eslint  **/*.js"
   },
   "repository": {

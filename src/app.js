@@ -20,6 +20,7 @@ app.disable('x-powered-by');
 app.use('/api/v1', router);
 
 if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(join(__dirname, '..', 'client', 'build')));
   app.use('*', (req, res) => {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
