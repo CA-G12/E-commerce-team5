@@ -1,9 +1,8 @@
 const { searchProductsQuery } = require('../../database/queries');
 
 const searchProducts = (req, res) => {
-  const { q } = req.params;
-  console.log(q);
-  searchProductsQuery(q)
+  const { q, c } = req.params;
+  searchProductsQuery(q, c)
     .then((data) => {
       res.status(200).json(data.rows);
     })

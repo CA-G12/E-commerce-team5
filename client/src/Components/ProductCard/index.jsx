@@ -14,7 +14,7 @@ export default function ProductCart(props) {
   console.log('dkjfhhhhhhhhhhhhhhhhhh', productData);
   const [inCart, setInCart] = useState(productData.inCart);
   const navigate = useNavigate();
-
+  console.log(user);
   const iconStyle = {
     color: '#20d1cb',
     fontSize: '2rem',

@@ -6,6 +6,7 @@ import { BsFillCartFill } from 'react-icons/bs';
 import { RiLogoutBoxLine } from 'react-icons/ri';
 
 export default function Header({ user }) {
+  console.log(user);
   return user.loggedIn ? (
     <nav className="header">
       <section>

@@ -27,10 +27,15 @@ const signup = (req, res, next) => {
     })
     .then(() => hashPassword(password))
     .then((hashedPassword) => addUserQuery({ email, username, hashedPassword }))
-    .then((userData) =>
-      signJWT({ id: userData.id, email, username, avatar: userData.avatar })
+    .then((data) =>
+      signJWT({
+        id: data.id,
+        email,
+        username: data.username,
+        avatar: data.avatar,
+      }).then((token) => ({ ...data, token }))
     )
-    .then((token) => res.cookie('token', token).json(token))
+    .then((data) => res.cookie('token', data.token).json(data))
     .catch((err) => {
       if (err.details) {
         next(
