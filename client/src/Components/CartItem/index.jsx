@@ -6,12 +6,13 @@ import { RiDeleteBinFill } from 'react-icons/ri';
 import { useState, useEffect } from 'react';
 
 import { ToastContainer, toast } from 'react-toastify';
+import { useOutletContext } from 'react-router-dom';
 import NotFound from '../ProductCard/broken1.png';
 import 'react-toastify/dist/ReactToastify.css';
 
 const getCart = () => fetch('/api/v1/cart').then((data) => data.json());
 
-const deleteCart = ({ id, setCartItem }) => {
+const deleteCart = ({ id, setCartItem, cart, setCart }) => {
   fetch(`/api/v1/cart/${id}`, {
     method: 'delete',
     headers: {
@@ -19,13 +20,17 @@ const deleteCart = ({ id, setCartItem }) => {
     },
   })
     .then((res) => res.json())
-    .then(() => getCart())
+    .then((res) => {
+      setCart(cart.filter((e) => e.id !== res.res.rows[0].productid));
+      return getCart();
+    })
     .then((data) => {
       setCartItem(data);
     });
 };
 function CartItem({ data, setCartItem }) {
   const [state, setState] = useState(data);
+  const [, , cart, setCart] = useOutletContext();
   const notify = () => toast('saved successfully!');
   const { image, name, timeadded, price, quantity, id } = state;
 
@@ -51,7 +56,7 @@ function CartItem({ data, setCartItem }) {
   }, []);
 
   const handleDelete = () => {
-    deleteCart({ id, userId: data.userId, setCartItem });
+    deleteCart({ id, userId: data.userId, setCartItem, cart, setCart });
   };
 
   const handleSubmit = () => {

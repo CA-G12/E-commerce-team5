@@ -3,14 +3,15 @@ import { Triangle } from 'react-loader-spinner';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import './style.css';
 
-const index = () => {
+function Index() {
   const navigate = useNavigate();
-  const [user, setUser] = useOutletContext();
+  const [user, setUser, , setCart] = useOutletContext();
   useEffect(() => {
     fetch('/api/v1/logout')
       .then((data) => data.json())
       .then(() => {
         setUser({ ...user, loggedIn: false });
+        setCart([]);
         navigate('/');
       });
   }, []);
@@ -28,6 +29,6 @@ const index = () => {
       />
     </div>
   );
-};
+}
 
-export default index;
+export default Index;
