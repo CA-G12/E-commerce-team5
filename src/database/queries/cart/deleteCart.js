@@ -3,7 +3,7 @@ const connection = require('../../config/connection');
 
 const deleteCart = ({ userId, productId }) => {
   return connection.query(
-    'delete from cart c where c.userid=$1 and c.productid=$2  ',
+    'delete from cart c where c.userid=$1 and c.productid=$2  Returning *',
     [userId, productId]
   );
 };

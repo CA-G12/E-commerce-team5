@@ -5,7 +5,7 @@ const addCart = ({ userId, productId, q }) => {
   return connection.query(
     `INSERT INTO cart (userid, productid, quantity) 
     VALUES ($1, $2, $3)
-    ON CONFLICT (userid,productid) DO UPDATE SET quantity = $3`,
+    ON CONFLICT (userid,productid) DO UPDATE SET quantity = $3 Returning *`,
     [userId, productId, q]
   );
 };
