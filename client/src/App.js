@@ -15,7 +15,6 @@ function App() {
         setCart(values[1]);
       } else {
         setUserdata({ loggedIn: false, checking: false });
-        console.log('p1', values[1]);
       }
     });
   }, []);
