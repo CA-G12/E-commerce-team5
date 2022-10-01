@@ -2,11 +2,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
 // import React from 'react';
-import './style.css';
-import { FaRegWindowClose } from 'react-icons/fa';
-import { useState } from 'react';
-import { Link, useNavigate, useOutletContext } from 'react-router-dom';
-import SearchLoading from '../loadingSpinner';
+import "./style.css";
+import { FaRegWindowClose } from "react-icons/fa";
+import { useState } from "react";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import SearchLoading from "../loadingSpinner";
 
 function Signup() {
   const [user, setUser] = useOutletContext();
@@ -21,10 +21,10 @@ function Signup() {
   };
   const signUpReq = () => {
     setIsLoading(true);
-    fetch('/api/v1/signup', {
-      method: 'POST',
+    fetch("/api/v1/signup", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     })
@@ -35,7 +35,7 @@ function Signup() {
           setSignupError(data);
         } else {
           setUser({ ...data, loggedIn: true, checking: false });
-          navigate('/');
+          navigate("/");
         }
       });
     //   .then((data) => data.json());
@@ -96,11 +96,11 @@ function Signup() {
                   name="email"
                   id="email"
                   placeholder="email"
-                  className={signupError?.name === 'email' ? 'inputError' : ''}
+                  className={signupError?.name === "email" ? "inputError" : ""}
                   onChange={(e) => changeFormData(e)}
                 />
                 <span className="errorLabel">
-                  {signupError?.name === 'email' ? signupError.error : ''}
+                  {signupError?.name === "email" ? signupError.error : ""}
                 </span>
               </div>
               <div className="input-box usernameBox">
@@ -110,12 +110,12 @@ function Signup() {
                   id="username"
                   placeholder="username"
                   className={
-                    signupError?.name === 'username' ? 'inputError' : ''
+                    signupError?.name === "username" ? "inputError" : ""
                   }
                   onChange={(e) => changeFormData(e)}
                 />
                 <span className="errorLabel">
-                  {signupError?.name === 'username' ? signupError.error : ''}
+                  {signupError?.name === "username" ? signupError.error : ""}
                 </span>
               </div>
               <div className="input-box passwordBox">
@@ -125,12 +125,12 @@ function Signup() {
                   id="password"
                   placeholder="password"
                   className={
-                    signupError?.name === 'password' ? 'inputError' : ''
+                    signupError?.name === "password" ? "inputError" : ""
                   }
                   onChange={(e) => changeFormData(e)}
                 />
                 <span className="errorLabel">
-                  {signupError?.name === 'password' ? signupError.error : ''}
+                  {signupError?.name === "password" ? signupError.error : ""}
                 </span>
               </div>
 

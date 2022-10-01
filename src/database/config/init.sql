@@ -129,7 +129,7 @@ VALUES (
         'Air Mouse', 
         'https://957839.smushcdn.com/2645180/wp-content/uploads/2022/03/Alienware-Wired-Wireless-Gaming-Mouse-AW610M-Dark-Side-of-the-Moon.png?size=1000x777&lossy=1&strip=1&webp=1', 
         50, 
-        5
+        4
     ), 
      (
         'Gaming Mouse', 
