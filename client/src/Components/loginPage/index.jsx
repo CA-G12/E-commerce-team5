@@ -8,8 +8,7 @@ import { useState } from "react";
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import SearchLoading from "../loadingSpinner";
 
-
-const Index = () => {
+function Index() {
   const [user, setUser] = useOutletContext();
   const navigate = useNavigate();
   const [loginFormData, setLoginFormData] = useState({});

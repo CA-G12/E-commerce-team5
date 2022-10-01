@@ -5,12 +5,13 @@ import './style.css';
 
 import { BsCartPlus, BsCartFill, BsQuestionCircleFill } from 'react-icons/bs';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import NotFound from './broken1.png';
 
 /// products user => token => id // cart // products => {incart: true}
-export default function ProductCart(props) {
+export default function ProductCard(props) {
   const { productData, user } = props;
+  const [, , cart, setCart] = useOutletContext();
   const [inCart, setInCart] = useState(productData.inCart);
   const navigate = useNavigate();
   const iconStyle = {
@@ -29,7 +30,11 @@ export default function ProductCart(props) {
         }),
       })
         .then((res) => res.json())
-        .then(() => setInCart(true));
+        .then((res) => {
+          const editedIdKey = { ...res.rows[0], id: res.rows[0].productid };
+          setCart((prev) => [...prev, editedIdKey]);
+          setInCart(true);
+        });
     } else {
       navigate('/login');
     }
@@ -42,7 +47,8 @@ export default function ProductCart(props) {
       },
     })
       .then((res) => res.json())
-      .then(() => {
+      .then((res) => {
+        setCart(cart.filter((e) => e.id !== res.res.rows[0].productid));
         setInCart(false);
       });
   };

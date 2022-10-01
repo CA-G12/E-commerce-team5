@@ -7,7 +7,6 @@ const getSingleProduct = (req, res) => {
       res.json(data.rows);
     })
     .catch((err) => {
-      console.log(err);
       res.status(500).json('something went wrong', err);
     });
 };

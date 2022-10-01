@@ -5,26 +5,28 @@ import Footer from './Components/footer';
 
 function App() {
   const [userData, setUserdata] = useState({ loggedIn: false, checking: true });
+  const [cart, setCart] = useState([]);
   useEffect(() => {
-    fetch('/api/v1/isLogged')
-      .then((data) => data.json())
-      .then((data) => {
-        if (data.istoken) {
-          setUserdata({ loggedIn: true, checking: false, ...data });
-        } else {
-          setUserdata({ loggedIn: false, checking: false });
-        }
-      });
+    const p0 = fetch('/api/v1/isLogged').then((data) => data.json());
+    const p1 = fetch(`/api/v1/cart`).then((res) => res.json());
+    Promise.all([p0, p1]).then((values) => {
+      if (values[0].istoken) {
+        setUserdata({ loggedIn: true, checking: false, ...values[0] });
+        setCart(values[1]);
+      } else {
+        setUserdata({ loggedIn: false, checking: false });
+      }
+    });
   }, []);
 
   return (
     <>
-      <Header user={userData} />
+      <Header user={userData} cart={cart} />
       <div className="main" style={{ minHeight: '100vh' }}>
         {userData.checking ? (
           <div>loading</div>
         ) : (
-          <Outlet context={[userData, setUserdata]} />
+          <Outlet context={[userData, setUserdata, cart, setCart]} />
         )}
       </div>
       <Footer />

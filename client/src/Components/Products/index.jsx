@@ -21,6 +21,21 @@ const makePages = (totalCount, pageSize) => {
   }
   return btns;
 };
+const checkInCart = (productsFromDB, inCartProductsIDs) => {
+  const updatedProducts = [];
+  if (inCartProductsIDs) {
+    productsFromDB.forEach((product) => {
+      inCartProductsIDs.includes(product.id)
+        ? updatedProducts.push({ ...product, inCart: true })
+        : updatedProducts.push({ ...product, inCart: false });
+    });
+  } else {
+    productsFromDB.forEach((product) => {
+      updatedProducts.push({ ...product, inCart: false });
+    });
+  }
+  return updatedProducts;
+};
 // eslint-disable-next-line react/prop-types
 export default function Products({ userData }) {
   const [products, setProducts] = useState([]);
@@ -28,7 +43,7 @@ export default function Products({ userData }) {
   const [categoryId, setCategoryId] = useState();
   const [productsCount, setProductsCount] = useState(0);
   const [off, setoff] = useState(1);
-  const [user, setUser] = useOutletContext();
+  const [user, setUser, cart, setCart] = useOutletContext();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [loading, setLoading] = useState(false);
@@ -37,29 +52,18 @@ export default function Products({ userData }) {
     const p1 = fetch('/api/v1/products').then((res) => res.json());
     const p3 = fetch('/api/v1/products-count').then((res) => res.json());
     const p4 = fetch('/api/v1/categories').then((res) => res.json());
-    const p2 = user.loggedIn && fetch(`/api/v1/cart`).then((res) => res.json());
-    Promise.all([p1, p2, p3, p4]).then((values) => {
-      setProductsCount(values[2][0].product_count);
-      setCategories(values[3]);
-      const productsInCartIds = values[1] && values[1].map((e) => e.id);
-      const updatedProducts = [];
-      if (values[1]) {
-        values[0].forEach((product) => {
-          productsInCartIds.includes(product.id)
-            ? updatedProducts.push({ ...product, inCart: true })
-            : updatedProducts.push({ ...product, inCart: false });
-        });
-      } else {
-        values[0].forEach((product) => {
-          updatedProducts.push({ ...product, inCart: false });
-        });
-      }
-      if (updatedProducts.length > 0) {
-        setProducts(updatedProducts);
+    Promise.all([p1, p3, p4]).then((values) => {
+      setProductsCount(values[1][0].product_count);
+      setCategories(values[2]);
+      if (cart) {
+        const result = checkInCart(
+          values[0],
+          cart?.map((e) => e.id)
+        );
+        setProducts(result);
       }
     });
   }, []);
-
   // eslint-disable-next-line consistent-return
   useEffect(() => {
     const q = searchParams.get('q') || ' ';
@@ -71,8 +75,16 @@ export default function Products({ userData }) {
         fetch(`api/v1/search/${q}&${c}`)
           .then((data) => data.json())
           .then((data) => {
-            setProducts(data);
             setLoading(false);
+            if (cart) {
+              const result = checkInCart(
+                data,
+                cart.map((e) => e.id)
+              );
+              setProducts(result);
+            } else {
+              setProducts(data);
+            }
           });
       }, 1000);
     } else if (q === '' && !c) {
@@ -80,8 +92,13 @@ export default function Products({ userData }) {
       fetch(`/api/v1/products`)
         .then((data) => data.json())
         .then((data) => {
-          setProducts(data);
-          setLoading(false);
+          if (cart) {
+            const result = checkInCart(
+              data,
+              cart.map((e) => e.id)
+            );
+            setProducts(result);
+          }
         });
     }
     return () => clearTimeout(timer);
@@ -94,7 +111,13 @@ export default function Products({ userData }) {
     fetch(`/api/v1/products/page/${offset}`)
       .then((data) => data.json())
       .then((data) => {
-        setProducts(data);
+        if (cart) {
+          const result = checkInCart(
+            data,
+            cart.map((c) => c.id)
+          );
+          result.length > 0 && setProducts(result);
+        } else setProducts(data);
         setLoading(false);
       });
   };
