@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import SearchLoading from '../loadingSpinner';
 
-const index = () => {
+function Signup() {
   const [user, setUser] = useOutletContext();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
@@ -151,6 +151,6 @@ const index = () => {
       </div>
     </div>
   );
-};
+}
 
-export default index;
+export default Signup;
