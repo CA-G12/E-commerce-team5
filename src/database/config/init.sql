@@ -35,7 +35,7 @@ cart (
         quantity INT DEFAULT 1,
         timeAdded TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT FKuserId FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
-        CONSTRAINT FKproductId FOREIGN KEY (productId) REFERENCES users(id) ON DELETE CASCADE,
+        CONSTRAINT FKproductId FOREIGN KEY (productId) REFERENCES products(id) ON DELETE CASCADE,
         PRIMARY KEY (userId, productId)
     );
 

@@ -6,7 +6,7 @@ import { useParams, useOutletContext, useNavigate } from 'react-router-dom';
 
 export default function ProductPage() {
   const { id } = useParams();
-  const [user] = useOutletContext();
+  const [user, , cart, setCart] = useOutletContext();
   const [inCart, setInCart] = useState(!user.loggedIn ? false : null);
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
@@ -44,7 +44,9 @@ export default function ProductPage() {
         }),
       })
         .then((res) => res.json())
-        .then(() => {
+        .then((res) => {
+          const editedIdKey = { ...res.rows[0], id: res.rows[0].productid };
+          setCart((prev) => [...prev, editedIdKey]);
           setInCart(true);
         });
     } else {
@@ -59,7 +61,8 @@ export default function ProductPage() {
       },
     })
       .then((res) => res.json())
-      .then(() => {
+      .then((res) => {
+        setCart(cart.filter((e) => e.id !== res.res.rows[0].productid));
         setInCart(false);
       });
   };

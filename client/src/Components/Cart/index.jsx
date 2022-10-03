@@ -23,7 +23,7 @@ function Cart() {
       navigate('/');
     }
   }, []);
-  
+
   return (
     <main className="wrapper">
       <section className="content">

@@ -7,7 +7,6 @@ const searchProducts = (req, res) => {
       res.status(200).json(data.rows);
     })
     .catch((err) => {
-      console.log(err);
       res.status(500).json({ msg: 'something went wrong' });
     });
 };
